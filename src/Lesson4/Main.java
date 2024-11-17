@@ -145,10 +145,11 @@ public class Main {
 //        System.out.println("Сумма двух чисел: " + res1);
 //        System.out.println("Сумма трех чисел: " + res2);
 
-        System.out.println("Написать программу калькулятор");
-        System.out.println();
+//        System.out.println("Написать программу калькулятор");
+//        System.out.println();
 
 
+        System.out.println("Вносим изменения");
 
 
     }
