@@ -21,7 +21,7 @@ public class DZ_Nizam_13 {
     }
 
     public static int data(int i, int[] arr) {
-        if (i == arr.length)
+        if (i == arr.length) // i == 6
             return 0;
         int count = (arr[i] < 0) ? 1 : 0;
         return count + data(i + 1, arr);
