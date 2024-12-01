@@ -8,7 +8,6 @@ public class DZ_Nizam_17 {
         StringBuilder sb = new StringBuilder("\" Текст с повторяющимися символами \"");
         StringBuilder duplicates = new StringBuilder(sb);
         System.out.println(sb);
-        //System.out.println(duplicates);
         int n = 0;
         modifyStr(sb, duplicates," ", "");
         System.out.print("Измененная строка - ");
