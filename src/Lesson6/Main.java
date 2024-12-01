@@ -4,6 +4,8 @@ import org.w3c.dom.css.CSSStyleRule;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
@@ -346,16 +348,102 @@ public class Main {
 //        System.out.println("Привет > привет : " + str.compareToIgnoreCase("привет"));  // 0
 
 
-        String str = "11 23 44 55 23 22";
-        String str1 = "11";
-        String change = "!!!";
-        if (str.contains(str1)) {
-            str = str.replace(str1, change);
-            System.out.println(str);
-        }else {
-            System.out.println("Нет элементов для проверки");
-        }
+//        String str = "11 23 44 55 23 22";
+//        String str1 = "11";
+//        String change = "!!!";
+//        if (str.contains(str1)) {
+//            str = str.replace(str1, change);
+//            System.out.println(str);
+//        }else {
+//            System.out.println("Нет элементов для проверки");
+//        }
+
+          ////////////////////////////////////////////////////////////
+          ////  StringBuilder Конструктор строк //////////////////////
+          ////////////////////////////////////////////////////////////
+//        StringBuilder sb = new StringBuilder();
+//        System.out.println(sb.capacity());
+//        System.out.println(sb.length());
+//        System.out.println(sb + "\n");
+//
+//        StringBuilder sb1 = new StringBuilder(1000);
+//        System.out.println(sb1.capacity());
+//        System.out.println(sb1.length());
+//        System.out.println(sb1 + "\n");
+//
+//        StringBuilder sb2 = new StringBuilder("Java");
+//        System.out.println(sb2.capacity());
+//        System.out.println(sb2.length());
+//        System.out.println(sb2 + "\n");
+
+
+//        StringBuilder sb = new StringBuilder();
+//        sb.append('a');
+//        sb.append(true);
+//        sb.append(10);
+//        sb.append(12345L);
+//        sb.append(10.20f);
+
+//        sb.append("hello").
+//                append(" ").
+//                append("world");
+//        sb.insert(5, "!");
+//     //   sb.delete(5, 7);
+//        sb.deleteCharAt(5);
+//
+//        sb.replace(6, 11, "java");
+//
+//
+//        System.out.println(sb);
+//
+//        String st = sb.substring(6,7);
+//        System.out.println(st);
+//        st = sb.substring(6);
+//        System.out.println(st);
+
+//        System.out.println(sb);
+//        sb.reverse();
+//        System.out.println(sb);
+
+//        System.out.println(sb.indexOf("l",4));
+
+//        StringBuilder sb1 = creatStr(5, 3);
+//        System.out.println(sb1);
+//        modifyStr(sb1, "=", "равно");
+//        modifyStr(sb1, "+", "плюс");
+//        modifyStr(sb1, "-", "минус");
+//        modifyStr(sb1, "*", "умножить");
+//        System.out.println(sb1);
+
+        String s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта.";
+        String pattern = "ищу";
+        Pattern regex = Pattern.compile(pattern);
+        System.out.println(regex);
+        Matcher matcher = regex.matcher(s);
+        System.out.println(matcher);
+
+
 
 
     }
+
+//    public static StringBuilder creatStr(int a, int b) {
+//        StringBuilder res = new StringBuilder();
+//        res.append(a).append(" + ").append(b).append(" = ").append(a + b).append("\n");
+//        res.append(a).append(" - ").append(b).append(" = ").append(a - b).append("\n");
+//        res.append(a).append(" * ").append(b).append(" = ").append(a * b).append("\n");
+//
+//
+//        return res;
+//    }
+//
+//    public static StringBuilder modifyStr(StringBuilder stBuild, String oldStr, String newStr) {
+//        int pos;
+//        while ((pos = stBuild.indexOf(oldStr)) != -1){
+//            stBuild.replace(pos, pos +1, newStr);
+//        }
+//        return stBuild;
+//    }
+
+
 }
