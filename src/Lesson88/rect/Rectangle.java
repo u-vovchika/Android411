@@ -5,8 +5,11 @@ public class Rectangle {
     private int width;
 
     public Rectangle(int length, int width) {
-        this.length = length;
-        this.width = width;
+//        this.length = length;
+//        this.width = width;
+        setLength(length);
+        setWidth(width);
+
     }
 
     public int getLength() {
