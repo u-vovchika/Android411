@@ -15,9 +15,21 @@ public class Numbers {
                 mn = num[i];
             }
         }
-
-
         return mn;
     }
+
+    public static double average(int a, int b, int c, int d){
+        return (a + b + c + d) /4.0;
+    }
+    public static int factorial(int n){
+        int fact = 1 ;
+        for (int i = 1; i <= n; i++) {
+            fact *= i;
+        }
+        return fact;
+    }
+
+
+
 
 }
