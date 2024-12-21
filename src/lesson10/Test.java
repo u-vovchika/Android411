@@ -3,20 +3,24 @@ package lesson10;
 public class Test {
     public static void main(String[] args) {
         Line l1 = new Line();
-//        l1.color = "red";
-//        l1.width = 5;
-        l1.x1 = l1.y1 = 0;
-        l1.x2 = l1.y2 = 10;
-//        l1.showProg();
-        l1.show();
+////        l1.color = "red";
+////        l1.width = 5;
+//        l1.x1 = l1.y1 = 0;
+//        l1.x2 = l1.y2 = 10;
+////        l1.showProg();
+//        l1.show();
+//        l1.showId();
+        System.out.println(l1.id);
+        l1.id = 5;
         l1.showId();
+
     }
 }
 
 class Properties {
     int width;
     String color;
-    int id = 1;
+    protected int id = 1;
 
     public Properties() {
         System.out.println("Конструктор Properties");
@@ -37,7 +41,7 @@ class Properties {
 class Line extends Properties {
     double x1, y1;
     double x2, y2;
-    int id = 2;
+    //int id = 2;
 
     public Line() {
         super(10, "yellow");
@@ -52,7 +56,9 @@ class Line extends Properties {
     }
 
     void showId() {
-        System.out.println("id = " + id + ", super.id = "+ super.id);
+        System.out.println("id = " + id
+               // + ", super.id = "+ super.id
+        );
     }
 }
 

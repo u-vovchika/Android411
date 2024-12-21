@@ -1,6 +1,6 @@
 package lesson10.person;
 
-public class Student extends Human{
+public class Student extends Human {
 
     private String speciality;
     private String group;
@@ -20,6 +20,24 @@ public class Student extends Human{
         setAttendance(attendance);
         System.out.println("StudentConstructor\t" + Integer.toHexString(hashCode()));
 
+    }
+
+    public Student(Human human, String speciality, String group, double rating, double attendance) {
+        super(human);
+        setSpeciality(speciality);
+        setGroup(group);
+        setRating(rating);
+        setAttendance(attendance);
+        System.out.println("StudentConstructor\t" + Integer.toHexString(hashCode()));
+    }
+
+    public Student(Student other) {
+        super(other);
+        this.speciality = other.speciality;
+        this.group = other.group;
+        this.rating = other.rating;
+        this.attendance = other.attendance;
+        System.out.println("StudentConstructor\t" + Integer.toHexString(hashCode()));
     }
 
     public String getSpeciality() {

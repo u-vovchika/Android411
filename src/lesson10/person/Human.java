@@ -18,6 +18,15 @@ public class Human {
 
     }
 
+    public Human(Human other) {
+        this.lastName = other.lastName;
+        this.firstName = other.firstName;
+        this.age = other.age;
+        System.out.println("HumanConstructor\t"
+                + Integer.toHexString(hashCode()));
+    }
+
+
     public String getLastName() {
         return lastName;
     }
@@ -49,6 +58,6 @@ public class Human {
                 ", firstName='" + firstName + '\'' +
                 ", age=" + age +
                 '}';
-       // return super.toString();
+        // return super.toString();
     }
 }
