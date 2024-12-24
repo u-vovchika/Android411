@@ -16,11 +16,11 @@ public class Box3D extends Box {
     }
 
     public void setDeep(double deep) {
+        if(deep > 0)
         this.deep = deep;
     }
 
     public double volume(){
-
-        return deep * width * height;
+           return deep * width * height;
     }
 }
