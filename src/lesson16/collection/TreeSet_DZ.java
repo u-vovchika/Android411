@@ -8,7 +8,7 @@ import java.util.TreeSet;
 public class TreeSet_DZ {
     public static void main(String[] args) {
 
-        Set<Integer> treeSet = new TreeSet<>();
+        TreeSet<Integer> treeSet = new TreeSet<>();
         Scanner input = new Scanner(System.in);
         System.out.println("Сщздайте программу, которая наполнит TreeSet 5-ю целыми числами с клавиатуры");
         System.out.println("и выведет наименьший (последний по величине) элемент: ");
