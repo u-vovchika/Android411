@@ -1,6 +1,7 @@
 package Lesson17.articles;
 
 
+import java.io.*;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -8,8 +9,12 @@ import java.util.Map;
 public class Model {
     private Map<String, Article> articles;
 
+    private String dbName;
+
+
     public Model() {
-        this.articles = new LinkedHashMap<>();
+        this.dbName = "db.txt";
+        this.articles = loadData();   // new LinkedHashMap<>();
     }
 
     public void addArticle(Map dictArticle){
@@ -21,10 +26,44 @@ public class Model {
     public Collection getAllArticles(){
         return articles.values();
     }
+
+public Map getSingleArticle(String userTitle){
+    Article article = articles.get(userTitle);
+    Map<String, String> dictArticle = new LinkedHashMap<>();
+    dictArticle.put("название", article.getTitle());
+    dictArticle.put("автор", article.getAuthor());
+    dictArticle.put("количество страниц", article.getPage());
+    dictArticle.put("описане", article.getDescription());
+    return dictArticle;
 }
 
 
-class Article{
+    public Article removeArticle(String userArticle){
+        return articles.remove(userArticle);
+    }
+
+    public void saveData() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dbName))) {
+            oos.writeObject(articles);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public LinkedHashMap loadData(){
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dbName))){
+            return (LinkedHashMap) ois.readObject();
+        }catch (Exception ex){
+            return new LinkedHashMap<>();
+        }
+    }
+}
+
+
+
+
+
+class Article implements Serializable {
     private String title;
     private String author;
     private String page;
@@ -36,6 +75,8 @@ class Article{
         this.page = (String) dictArticle.get("количество страниц");;
         this.description = (String) dictArticle.get("описание");;
     }
+
+
 
     public String getTitle() {
         return title;
