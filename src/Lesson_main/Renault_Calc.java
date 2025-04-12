@@ -39,7 +39,7 @@ public class Renault_Calc {
             v0 = -1; // Инициализация переменной v0
             // Проверка, находится ли буква в диапазоне от 'A' до 'Z'
             if (letterR >= 'A' && letterR <= 'Z') {
-                v0 = letterR - 'A'; // Вычисляем значение v0
+                C = letterR - 'A'; // Вычисляем значение v0
             }
             //System.out.println("Значение v0 для буквы " + letterR + ": " + v0);
         }
