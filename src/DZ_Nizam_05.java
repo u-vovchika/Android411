@@ -19,6 +19,7 @@ public class DZ_Nizam_05 {
             case 3  -> System.out.println("Добрый день");
             case 4  -> System.out.println("Добрый вечер");
             default -> System.out.println("Введено некорректное значение");
+
         }
 
 
