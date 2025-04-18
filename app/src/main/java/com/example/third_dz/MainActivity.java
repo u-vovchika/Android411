@@ -4,11 +4,15 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +20,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.chip.Chip;
 
 import java.util.Timer;
 
@@ -62,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                     imageViewYellow.setImageResource(R.drawable.white_image);
                     imageViewGreen.setImageResource(R.drawable.white_image);
                     ((AnimationDrawable) image.getDrawable()).stop();
+                    Animation animationRotateCorner = AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotate_corner);
+                    image.startAnimation(animationRotateCorner);
                     constraintLayout.setBackgroundResource(R.color.red_r);
                     currentProgress = 0;
                     progressBar.setMax(currentProgress);
@@ -82,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
                     imageViewYellow.setImageResource(R.drawable.yellow_image);
                     imageViewGreen.setImageResource(R.drawable.white_image);
                     ((AnimationDrawable) image.getDrawable()).stop();
+                    Animation animationRotateCenter = AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotate_center);
+                    Animation animationRotateCorner = AnimationUtils.loadAnimation(MainActivity.this, R.anim.rotate_corner);
+                    image.startAnimation(animationRotateCenter);
+
+
+
                     constraintLayout.setBackgroundResource(R.color.yelow_y);
                     currentProgress = 0;
                     progressBar.setMax(currentProgress);
@@ -103,6 +117,12 @@ public class MainActivity extends AppCompatActivity {
                     imageViewYellow.setImageResource(R.drawable.white_image);
                     imageViewGreen.setImageResource(R.drawable.green_image);
                     ((AnimationDrawable) image.getDrawable()).start();
+//                    Animation out = AnimationUtils.loadAnimation(MainActivity.this,R.anim.anim_alpha);
+//                    image.startAnimation(out);
+
+                    Animation translate = AnimationUtils.loadAnimation(MainActivity.this, R.anim.anim_translator);
+                    image.startAnimation(translate);
+
                     constraintLayout.setBackgroundResource(R.color.green_g);
                     currentProgress = 0;
                     progressBar.setMax(100);
@@ -113,20 +133,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         progressBar = findViewById(R.id.progressBarHorizontal);
-//        Button startProgress = findViewById(R.id.startProgress);
-//
-//        //private Handler handler = new Handler();
-//        startProgress.setOnClickListener(new View.OnClickListener() {
+
+
+//        Chip chip1 = findViewById(R.id.chip);
+//        chip1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                ((AnimationDrawable) image.getDrawable()).start();
-//                currentProgress = 0;
-//                progressBar.setMax(100);
-//                updateProgress();
 //
-//                // ((AnimationDrawable) image.getDrawable()).stop();
-//
-//
+//                Toast.makeText(MainActivity.this, "Action Completer", Toast.LENGTH_SHORT).show();
 //            }
 //        });
 
