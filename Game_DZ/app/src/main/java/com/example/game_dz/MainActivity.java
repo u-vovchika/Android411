@@ -16,10 +16,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MediaPlayer sound_start_game, sound_sled_vopros, sound_prav_0, sound_prav_1, sound_no_prav, sound_prav_end;
+    private MediaPlayer sound_start_game, sound_prav_0,  sound_no_prav, sound_prav_end;
     private TextView questionTextView,questionTextView2;
     private ImageView imageFon;
-    private Button answerButton1, answerButton2, answerButton3, answerButton4;
+    private Button answerButton1, answerButton2, answerButton3, answerButton4,buttonLevel2,buttonBack;
 
 
     private String[] questions = {
@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
         sound_start_game = MediaPlayer.create(this, R.raw.start_game);
         sound_start_game.start();
-        sound_sled_vopros = MediaPlayer.create(this, R.raw.sled_vopros);
+        //sound_sled_vopros = MediaPlayer.create(this, R.raw.sled_vopros);
         sound_prav_0 = MediaPlayer.create(this, R.raw.prav);
-        sound_prav_1 = MediaPlayer.create(this, R.raw.prav2);
+        //sound_prav_1 = MediaPlayer.create(this, R.raw.prav2);
         sound_prav_end = MediaPlayer.create(this, R.raw.prav_end);
 
 
@@ -96,7 +96,11 @@ public class MainActivity extends AppCompatActivity {
         answerButton2 = findViewById(R.id.answerButton2);
         answerButton3 = findViewById(R.id.answerButton3);
         answerButton4 = findViewById(R.id.answerButton4);
+        buttonLevel2 = findViewById(R.id.buttonLevel2);
+        buttonBack = findViewById(R.id.buttonBack);
         imageFon = findViewById(R.id.imageFon);
+
+
 
         loadQuestion();
 
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadQuestion() {
+
         questionTextView.setText(questions[currentQuestionIndex]); // показываем вопрос
         questionTextView2.setText(questions2[currentQuestionIndex]); // показываем приз рублей
         answerButton1.setText(answers[currentQuestionIndex][0]); // показываем вариант ответа A
@@ -116,11 +121,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkAnswer(int selectedAnswer) {
+
         if (selectedAnswer == correctAnswers[currentQuestionIndex]) {
             // Правильный ответ
             sound_prav_0.start(); // трек правильного ответа
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
+                sound_start_game.stop();
                 loadQuestion();
             } else {
                 // Конец игры Вы миллионер
@@ -134,11 +141,21 @@ public class MainActivity extends AppCompatActivity {
                 answerButton4.setVisibility(View.GONE);
                 imageFon.setImageResource(R.drawable.priz);
                 sound_prav_end.start();
-                // нажимаемна фоновую картинку, чтобы начать сначало
-                imageFon.setOnClickListener(new View.OnClickListener() {
+                buttonLevel2.setTextColor(ContextCompat.getColor(this, R.color.green));
+                buttonBack.setTextColor(ContextCompat.getColor(this, R.color.green));
+                // нажимаемна НА КНОПКУ НАЗАД, чтобы начать сначало
+                buttonBack.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                buttonLevel2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sound_prav_end.stop();
+                        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                         startActivity(intent);
                     }
                 });
@@ -146,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             // Неправильный ответ
+            sound_start_game.stop();
             questionTextView.setText("Неправильный ответ!\n Попробуйте снова!");
             sound_no_prav.start(); // трек неправильного ответа
         }
