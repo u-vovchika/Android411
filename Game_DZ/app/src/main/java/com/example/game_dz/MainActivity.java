@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sound_start_game = MediaPlayer.create(this, R.raw.start_game);
-        sound_start_game.start();
+        //sound_start_game.start();
         //sound_sled_vopros = MediaPlayer.create(this, R.raw.sled_vopros);
         sound_prav_0 = MediaPlayer.create(this, R.raw.prav);
         //sound_prav_1 = MediaPlayer.create(this, R.raw.prav2);

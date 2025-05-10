@@ -23,7 +23,7 @@ import java.util.Random;
 
 public class Level2 extends AppCompatActivity {
     Dialog dialog;
-
+    Dialog dialogEnd;
     public int numLeft;  // переменная для левой картинки + текст
     public int numRight;  // переменная для правой картинки + текст
     Array array = new Array();  // создаем пустой массив
@@ -38,7 +38,7 @@ public class Level2 extends AppCompatActivity {
         setContentView(R.layout.universal);
         // установка номера уровня
         TextView textLevels = findViewById(R.id.textView);
-        textLevels.setText(R.string.level_1);
+        textLevels.setText(R.string.level_2);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -57,6 +57,16 @@ public class Level2 extends AppCompatActivity {
         dialog.setContentView(R.layout.preview_dialog);
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); // прозрачный фон диалогового окна
         dialog.setCancelable(false); // окно нельзя закрыть кликом за пределами диалогового окна
+
+        // устанавливаем картинку диалогового окна ввиде коментария
+        ImageView previewImg = dialog.findViewById(R.id.previev_img);
+        previewImg.setImageResource(R.drawable.number_lev_two);
+
+        // устанавливаем описание задания
+        TextView textDexcription = dialog.findViewById(R.id.text_description);
+        textDexcription.setText(R.string.level_two);
+
+
 
         //кнопка назад
         TextView btnClose = dialog.findViewById(R.id.button_close);
@@ -80,6 +90,43 @@ public class Level2 extends AppCompatActivity {
 
         dialog.show(); //показать диалоговое окно
 
+        // -------------------------------------------------------------------------
+        // Вызов диалогового окна в конце игры
+        dialogEnd = new Dialog(this);
+        dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE); //скрываем заголовок
+        dialogEnd.setContentView(R.layout.dialog_end); //путь к диалоговому окну
+        dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //фон прозрачный
+        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); // диалоговое окно раширяется на величину экрана
+        dialogEnd.setCancelable(false); //нельзя закрывать за пределами окна
+
+        // интересный факт
+        TextView textDescriptionEnd = dialogEnd.findViewById(R.id.text_description_end);
+        textDescriptionEnd.setText(R.string.level_two_end);
+
+
+        TextView btnClose2 = dialogEnd.findViewById(R.id.button_close);
+        btnClose2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // вернемся назад к выбору уровня
+                Intent intent = new Intent(Level2.this, GameLevels.class);
+                startActivity(intent);
+                dialogEnd.dismiss();
+            }
+        });
+
+        Button button_continue2 = dialogEnd.findViewById(R.id.button_continue);
+        button_continue2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Level2.this, Level3.class);
+                startActivity(intent);
+                dialogEnd.dismiss();
+            }
+        });
+
+        // -------------------------------------------------------------------------
+
         // кнопка назад из окна с уровнем
         Button btnBack = findViewById(R.id.button_back_level1);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -90,22 +137,20 @@ public class Level2 extends AppCompatActivity {
             }
         });
 
-
         final Animation animation = AnimationUtils.loadAnimation(Level2.this, R.anim.alpha);
-
 
         // генерировали значение для левой картики
         numLeft = random.nextInt(10);
-        imgLeft.setImageResource(array.image1[numLeft]);
-        textLeft.setText(array.text1[numLeft]); //достаем из массива текст
+        imgLeft.setImageResource(array.image2[numLeft]);
+        textLeft.setText(array.text2[numLeft]); //достаем из массива текст
 
         // генерировали значение для правой картики
         numRight = random.nextInt(10);
         while (numLeft == numRight) {
             numRight = random.nextInt(10);
         }
-        imgRight.setImageResource(array.image1[numRight]);
-        textRight.setText(array.text1[numRight]); //достаем из массива текст
+        imgRight.setImageResource(array.image2[numRight]);
+        textRight.setText(array.text2[numRight]); //достаем из массива текст
 
         // массив для прогресса игры
         final int[] progress = {R.id.point1, R.id.point2, R.id.point3, R.id.point4, R.id.point5,
@@ -165,20 +210,20 @@ public class Level2 extends AppCompatActivity {
                         }
                     }
                     if (count == 20) { //выход из уровня
-
+                        dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(10);
-                        imgLeft.setImageResource(array.image1[numLeft]); //достаем из массива картьинку
+                        imgLeft.setImageResource(array.image2[numLeft]); //достаем из массива картьинку
                         imgLeft.startAnimation(animation); //запускаем анимацию для левой картики
-                        textLeft.setText(array.text1[numLeft]); // достаем из массива текст
+                        textLeft.setText(array.text2[numLeft]); // достаем из массива текст
 
                         numRight = random.nextInt(10);
                         while (numLeft == numRight) {
                             numRight = random.nextInt(10);
                         }
-                        imgRight.setImageResource(array.image1[numRight]); //достаем из массива картьинку
+                        imgRight.setImageResource(array.image2[numRight]); //достаем из массива картьинку
                         imgRight.startAnimation(animation); //запускаем анимацию для левой картики
-                        textRight.setText(array.text1[numRight]); // достаем из массива текст
+                        textRight.setText(array.text2[numRight]); // достаем из массива текст
                         imgRight.setEnabled(true); //включаем обратно правую картику
                     }
 
@@ -239,20 +284,20 @@ public class Level2 extends AppCompatActivity {
                         }
                     }
                     if (count == 20) { //выход из уровня
-
+                        dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(10);
-                        imgLeft.setImageResource(array.image1[numLeft]); //достаем из массива картьинку
+                        imgLeft.setImageResource(array.image2[numLeft]); //достаем из массива картьинку
                         imgLeft.startAnimation(animation); //запускаем анимацию для левой картики
-                        textLeft.setText(array.text1[numLeft]); // достаем из массива текст
+                        textLeft.setText(array.text2[numLeft]); // достаем из массива текст
 
                         numRight = random.nextInt(10);
                         while (numLeft == numRight) {
                             numRight = random.nextInt(10);
                         }
-                        imgRight.setImageResource(array.image1[numRight]); //достаем из массива картьинку
+                        imgRight.setImageResource(array.image2[numRight]); //достаем из массива картьинку
                         imgRight.startAnimation(animation); //запускаем анимацию для левой картики
-                        textRight.setText(array.text1[numRight]); // достаем из массива текст
+                        textRight.setText(array.text2[numRight]); // достаем из массива текст
                         imgLeft.setEnabled(true); //включаем обратно правую картику
                     }
 

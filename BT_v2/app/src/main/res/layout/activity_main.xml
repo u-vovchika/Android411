@@ -20,20 +20,26 @@
     <Button
         android:id="@+id/btnSend"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_below="@id/btnConnect"
         android:layout_alignParentStart="true"
         android:layout_margin="10dp"
-        android:text="Включить" />
+        android:text="ВКЛ"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/design_default_color_secondary_variant"/>
 
     <Button
         android:id="@+id/btnSendOff"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_below="@+id/btnConnect"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        android:text="Выключить" />
+        android:text="ВЫКЛ"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/design_default_color_secondary_variant"/>
 
     <Button
         android:id="@+id/btnReceive"
@@ -54,12 +60,6 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageAir"
-        android:layout_width="match_parent"
-        android:layout_height="212dp"
-        android:layout_below="@id/receivedDataTextView"
-        app:srcCompat="@drawable/cim_off" />
 </RelativeLayout>
 
 

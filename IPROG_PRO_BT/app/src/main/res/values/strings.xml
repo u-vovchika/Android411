@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">IPROG_PRO_BT</string>
+    <string name="start">Начать</string>
+    <string name="back">Назад</string>
+    <string name="level">Уровень:</string>
+    <string name="level_1">Уровень 1:</string>
+    <string name="text_continue">Продолжить</string>
+    <string name="Dashboard">Щиток приборов</string>
+    <string name="AirBag">Подушка безопасности</string>
+    <string name="ECU">ЭБУ</string>
+    <string name="ABS">АБС</string>
+    <string name="BCM">Кузовной блок</string>
+    <string name="acura">Acura</string>
+    <string name="china">CHINA</string>
+    <string name="Immo">Иммобилайзер</string>
+    <string name="BCM2">Кузовной блок 2</string>
+    <string name="SAS">Датчик поворота руля</string>
+    <string name="Model">Модель</string>
+    <string name="Glanas">Гланас</string>
+    <string name="Model_ECU">Модель/ЕКУ</string>
+    <string name="renault_autoliv_xc23xx">Renault Autoliv_XC23xx</string>
+    <string name="renault_megane_2_scenic_2">Renault Megane 2 / Scenic 2</string>
+    <string name="renault_megane_3_fluence3">Renault Megane 3 / Fluence3</string>
+    <string name="renault_rh850_continental">Renault RH850 Continental</string>
+    <string name="renault_spc560_continental">Renault SPC560 Continental</string>
+    <string name="renault_temic_k_line">Renault TEMIC K-Line</string>
+    <string name="Identification">Информация о блоке</string>
+    <string name="Read_DTC">Чтение ошибок</string>
+    <string name="Erase_DTC">Стирание ошибок</string>
+    <string name="Data_stream">Поток данных</string>
+    <string name="Special_function">Специальные функции</string>
+    <string name="Erase_CRASH">Удалить СТОЛКНОВЕНИЕ</string>
+    <string name="renault_srs_spc560_can">Renault_SRS_SPC560_CAN</string>
+</resources>

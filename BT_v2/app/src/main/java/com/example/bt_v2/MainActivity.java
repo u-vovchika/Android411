@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     // UUID для SPP (Serial Port Profile)
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    private static final String DEVICE_ADDRESS = "C8:FD:19:94:B8:06"; // MAC-адрес вашего устройства
+    private static final String DEVICE_ADDRESS = "98:DA:50:01:B4:7C"; // MAC-адрес вашего устройства
 
     private TextView receivedDataTextView;
     private ImageView imageAir;
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageAir = findViewById(R.id.imageAir);
-        imageAir.setImageResource(R.drawable.cim_off);
+//        imageAir = findViewById(R.id.imageAir);
+//        imageAir.setImageResource(R.drawable.cim_off);
 
         btnConnect = findViewById(R.id.btnConnect);
         btnConnect.setBackgroundColor(Color.parseColor("#FF00007F"));
@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         Button btnSendOff = findViewById(R.id.btnSendOff);
         Button btnReceive = findViewById(R.id.btnReceive);
         receivedDataTextView = findViewById(R.id.receivedDataTextView);
-
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         // Проверка поддержки Bluetooth
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-/// //////////////////////////////////////////
+        ////////////////////////////////////////
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // Запрос разрешений
@@ -73,10 +72,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             connectToDevice(); // Подключение к устройству
         }
-
         /////////////////////////////////////////////
-
-
         btnConnect.setOnClickListener(v -> {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -91,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Отправка данных
-        btnSend.setOnClickListener(v -> sendData("BT-1"));
-        btnSendOff.setOnClickListener(v -> sendData("BT-2"));
+        btnSend.setOnClickListener(v -> sendData("BT01"));
+
+        btnSendOff.setOnClickListener(v -> sendData("BT00"));
         btnReceive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
 
             btnConnect.setBackgroundColor(Color.parseColor("#FF007F00"));
             receivedDataTextView.setText("Блютуз подключен");
-            receivedDataTextView.setTextColor(Color.parseColor("#FF00AF00"));
+            receivedDataTextView.setTextColor(Color.parseColor("#FF00DF00"));
             Toast.makeText(this, "Подключено", Toast.LENGTH_SHORT).show();
-
 
             // Запуск потока для приема данных
             new Thread(this::receiveData).start();
+
         } catch (Exception e) {
             btnConnect.setBackgroundColor(Color.BLACK);
             receivedDataTextView.setText("Блютуз отключен");
@@ -133,19 +130,19 @@ public class MainActivity extends AppCompatActivity {
         if (outputStream != null) {
             try {
                 outputStream.write(data.getBytes());
-                Toast.makeText(this, "Данные отправлены", Toast.LENGTH_SHORT).show();
-
-                if (data == "BT-1") {
+                if (data.equals("BT01")) {
                     receivedDataTextView.setText("Включено");
                     receivedDataTextView.setTextColor(Color.parseColor("#FFFF0000"));
                     imageAir.setImageResource(R.drawable.cim_on);
+                    Toast.makeText(this, "Включено", Toast.LENGTH_SHORT).show();
                 }
-                if (data == "BT-2") {
+                if (data.equals("BT00")) {
                     receivedDataTextView.setText("Выключено");
                     receivedDataTextView.setTextColor(Color.parseColor("#FF0000FF"));
                     imageAir.setImageResource(R.drawable.cim_off);
+                    Toast.makeText(this, "Выключено", Toast.LENGTH_SHORT).show();
                 }
-
+                Toast.makeText(this, "Данные отправлены", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Log.e("Bluetooth", "Ошибка отправки данных", e);
                 Toast.makeText(this, "Ошибка отправки данных", Toast.LENGTH_SHORT).show();

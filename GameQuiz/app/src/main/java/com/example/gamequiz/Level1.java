@@ -107,6 +107,16 @@ public class Level1 extends AppCompatActivity {
             }
         });
 
+        Button button_continue2 = dialogEnd.findViewById(R.id.button_continue);
+        button_continue2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Level1.this, Level2.class);
+                startActivity(intent);
+                dialogEnd.dismiss();
+            }
+        });
+
         // -------------------------------------------------------------------------
 
         // кнопка назад из окна с уровнем
