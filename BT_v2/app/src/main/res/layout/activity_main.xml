@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:layout_margin="20dp"
-    >
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnConnect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Подключить Bluetooth"
+        android:layout_margin="10dp"
         android:backgroundTint="@color/blue"
-        android:layout_margin="10dp"/>
+        android:text="Подключить Bluetooth" />
 
     <Button
         android:id="@+id/btnSend"
@@ -24,10 +24,10 @@
         android:layout_below="@id/btnConnect"
         android:layout_alignParentStart="true"
         android:layout_margin="10dp"
+        android:backgroundTint="@color/design_default_color_secondary_variant"
         android:text="ВКЛ"
         android:textSize="25sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/design_default_color_secondary_variant"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnSendOff"
@@ -36,18 +36,18 @@
         android:layout_below="@+id/btnConnect"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
+        android:backgroundTint="@color/design_default_color_secondary_variant"
         android:text="ВЫКЛ"
         android:textSize="25sp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/design_default_color_secondary_variant"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnReceive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Получить данные"
         android:layout_below="@id/btnSendOff"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:text="Получить данные" />
 
     <TextView
         android:id="@+id/receivedDataTextView"
@@ -60,6 +60,32 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchMaterialCh1"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/receivedDataTextView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="20dp"
+        android:text="ВКЛ"
+        android:textStyle="bold"
+        android:thumb="@drawable/baseline_album_24_red" />
+
+    <TextView
+        android:id="@+id/receivedDataTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/receivedDataTextView"
+
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/switchMaterialCh1"
+        android:gravity="center"
+        android:text="данные:"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 </RelativeLayout>
 
 

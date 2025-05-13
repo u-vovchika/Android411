@@ -106,7 +106,6 @@ public class Array {
     };
 
 
-
     // массивы для четвертого уровня
     final int[] image4 = {
             R.drawable.edible_1,
@@ -132,10 +131,78 @@ public class Array {
     };
 
 
+    final int[] image5 = {
+            R.drawable.home_1,
+            R.drawable.nothome_1,
+            R.drawable.home_2,
+            R.drawable.nothome_2,
+            R.drawable.home_3,
+            R.drawable.nothome_3,
+            R.drawable.home_4,
+            R.drawable.nothome_4,
+            R.drawable.home_5,
+            R.drawable.nothome_5,
+            R.drawable.home_6,
+            R.drawable.nothome_6,
+            R.drawable.home_7,
+            R.drawable.nothome_7,
+            R.drawable.home_8,
+            R.drawable.nothome_8,
+            R.drawable.home_9,
+            R.drawable.nothome_9,
+            R.drawable.home_10,
+            R.drawable.nothome_10,
 
+    };
+    final int[] text4 = {
+            R.string.lwl4_text_1,
+            R.string.lwl4_text_2,
+            R.string.lwl4_text_3,
+            R.string.lwl4_text_4,
+            R.string.lwl4_text_5,
+            R.string.lwl4_text_6,
+            R.string.lwl4_text_7,
+            R.string.lwl4_text_8,
+            R.string.lwl4_text_9,
+            R.string.lwl4_text_10,
+            R.string.lwl4_text_11,
+            R.string.lwl4_text_12,
+            R.string.lwl4_text_13,
+            R.string.lwl4_text_14,
+            R.string.lwl4_text_15,
+            R.string.lwl4_text_16,
+            R.string.lwl4_text_17,
+            R.string.lwl4_text_18,
+            R.string.lwl4_text_19,
+            R.string.lwl4_text_20
+    };
 
+    final int[] choice = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0};
 
+    final int[] text5 = {
+            R.string.lwl5_text_1,
+            R.string.lwl5_text_2,
+            R.string.lwl5_text_3,
+            R.string.lwl5_text_4,
+            R.string.lwl5_text_5,
+            R.string.lwl5_text_6,
+            R.string.lwl5_text_7,
+            R.string.lwl5_text_8,
+            R.string.lwl5_text_9,
+            R.string.lwl5_text_10,
+            R.string.lwl5_text_11,
+            R.string.lwl5_text_12,
+            R.string.lwl5_text_13,
+            R.string.lwl5_text_14,
+            R.string.lwl5_text_15,
+            R.string.lwl5_text_16,
+            R.string.lwl5_text_17,
+            R.string.lwl5_text_18,
+            R.string.lwl5_text_19,
+            R.string.lwl5_text_20
+    };
 
+    final int[] choice2 = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0};
 }
 
 

@@ -3,6 +3,7 @@ package com.example.gamequiz;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Gainmap;
 import android.graphics.drawable.ClipDrawable;
@@ -106,7 +107,7 @@ public class Level1 extends AppCompatActivity {
                 dialogEnd.dismiss();
             }
         });
-
+        // переход на следующий уровень
         Button button_continue2 = dialogEnd.findViewById(R.id.button_continue);
         button_continue2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,8 +204,16 @@ public class Level1 extends AppCompatActivity {
                             }
                         }
                     }
-                    if (count == 20) { //выход из уровня
-                        dialogEnd.show(); //показать завершающее диалоговое окно
+                    if (count == 20) {   // выход из уровня
+//                        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+//                        final int level = save.getInt("Level", 1);
+//                        if (level <= 1) {
+//                            SharedPreferences.Editor editor = save.edit(); // Даем отредактировать элемент
+//                            editor.putInt("Level", 2);  // ложим значение уровня 2
+//                            editor.apply(); // сохранить данные
+//                        }
+
+                        dialogEnd.show();  //  показать завершающее диалоговое окно
                     } else {
                         numLeft = random.nextInt(10);
                         imgLeft.setImageResource(array.image1[numLeft]); //достаем из массива картьинку
@@ -277,8 +286,15 @@ public class Level1 extends AppCompatActivity {
                             }
                         }
                     }
-                    if (count == 20) { //выход из уровня
-                        dialogEnd.show(); //показать завершающее диалоговое окно
+                    if (count == 20) {   // выход из уровня
+//                        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+//                        final int level = save.getInt("Level", 1);
+//                        if (level <= 1) {
+//                            SharedPreferences.Editor editor = save.edit(); // Даем отредактировать элемент
+//                            editor.putInt("Level", 2);  // ложим значение уровня 2
+//                            editor.apply(); // сохранить данные
+//                        }
+                        dialogEnd.show();   //  показать завершающее диалоговое окно
                     } else {
                         numLeft = random.nextInt(10);
                         imgLeft.setImageResource(array.image1[numLeft]); //достаем из массива картьинку

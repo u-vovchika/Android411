@@ -14,10 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity3 extends AppCompatActivity {
-
     private MediaPlayer sound_start_game;
     private ImageView imageFon;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +30,11 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sound_start_game.stop();
+                Intent intent = new Intent(MainActivity3.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
-
 
         // Задержка перед переходом на основную активность
         new Handler().postDelayed(new Runnable() {
@@ -42,9 +42,8 @@ public class MainActivity3 extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(MainActivity3.this, MainActivity.class);
                 startActivity(intent);
-                finish(); // Закрываем SplashActivity
+                finish(); // Закрываем
             }
         }, 12000); // Задержка в 3 секунды
-
     }
 }

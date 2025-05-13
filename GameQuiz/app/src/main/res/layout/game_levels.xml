@@ -41,10 +41,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/button_stroke_black_opacity_press_white"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
                     android:text="@string/back"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black_opacity"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <Button
+                    android:id="@+id/button_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_stroke_black_opacity_press_white"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/reset"
                     android:textAllCaps="false"
                     android:textColor="@color/black_opacity"
                     android:textSize="24sp" />
@@ -70,39 +90,37 @@
                             android:id="@+id/textView1"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="1"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="1"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textView2"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="2"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="2"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView3"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="3"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="3"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -115,40 +133,39 @@
                             android:id="@+id/textView4"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="4"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="4"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textView5"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="5"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="5"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView6"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="6"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/line3"
                         android:layout_width="match_parent"
@@ -159,40 +176,39 @@
                             android:id="@+id/textView7"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="7"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textView8"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="8"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView9"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="9"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/line4"
                         android:layout_width="match_parent"
@@ -203,40 +219,39 @@
                             android:id="@+id/textView10"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="10"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textView11"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="11"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView12"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="12"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/line5"
                         android:layout_width="match_parent"
@@ -247,47 +262,38 @@
                             android:id="@+id/textView13"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="13"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textView14"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="14"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView15"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:text="15"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_game_levels"
                             android:gravity="center"
+                            android:text="X"
                             android:textColor="@color/white"
                             android:textSize="24sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
-
-
-
-
-
-
-
 
 
                 </LinearLayout>

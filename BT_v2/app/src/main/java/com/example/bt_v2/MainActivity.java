@@ -6,12 +6,16 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +23,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,10 +45,45 @@ public class MainActivity extends AppCompatActivity {
     private TextView receivedDataTextView;
     private ImageView imageAir;
     Button btnConnect;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
+        RelativeLayout relativeLayout = findViewById(R.id.main);
+        SwitchMaterial switchMaterial = findViewById(R.id.switchMaterialCh1);
+        switchMaterial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(switchMaterial.isChecked()) {
+                    switchMaterial.setThumbDrawable(getDrawable(R.drawable.baseline_album_24_red));
+                    switchMaterial.setText("ВКЛ");
+                    switchMaterial.setThumbTintList(ColorStateList.valueOf(Color.RED));
+                    switchMaterial.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#004CFF")));
+                    relativeLayout.setBackgroundResource(R.color.bg_red);
+                    sendData("BT01");
+
+                } else {
+                    switchMaterial.setThumbDrawable(getDrawable(R.drawable.baseline_album_24_green));
+                    switchMaterial.setText("ВЫКЛ");
+                    switchMaterial.setThumbTintList(ColorStateList.valueOf(Color.GREEN));
+                    switchMaterial.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#FF6F00")));
+                    relativeLayout.setBackgroundResource(R.color.bg_green);
+                    sendData("BT00");
+
+                }
+            }
+        });
+
+
+
+
+
+
 
 //        imageAir = findViewById(R.id.imageAir);
 //        imageAir.setImageResource(R.drawable.cim_off);

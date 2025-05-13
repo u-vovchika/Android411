@@ -36,7 +36,12 @@
             android:screenOrientation="behind"
             tools:ignore="DiscouragedApi"
             />
-
+        <activity
+            android:name=".Level5"
+            android:exported="false"
+            android:screenOrientation="behind"
+            tools:ignore="DiscouragedApi"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true"

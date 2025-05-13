@@ -3,6 +3,7 @@ package com.example.gamequiz;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -59,7 +60,7 @@ public class Level2 extends AppCompatActivity {
         dialog.setCancelable(false); // окно нельзя закрыть кликом за пределами диалогового окна
 
         // устанавливаем картинку диалогового окна ввиде коментария
-        ImageView previewImg = dialog.findViewById(R.id.previev_img);
+        ImageView previewImg = dialog.findViewById(R.id.preview_img);
         previewImg.setImageResource(R.drawable.number_lev_two);
 
         // устанавливаем описание задания
@@ -114,7 +115,7 @@ public class Level2 extends AppCompatActivity {
                 dialogEnd.dismiss();
             }
         });
-
+        // переход на следующий уровень
         Button button_continue2 = dialogEnd.findViewById(R.id.button_continue);
         button_continue2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,6 +211,13 @@ public class Level2 extends AppCompatActivity {
                         }
                     }
                     if (count == 20) { //выход из уровня
+//                        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+//                        final int level = save.getInt("Level", 2);
+//                        if(level <= 2){
+//                            SharedPreferences.Editor editor = save.edit(); // Даем отредактировать элемент
+//                            editor.putInt("Level", 3);  // ложим значение уровня 2
+//                            editor.apply(); // сохранить данные
+//                        }
                         dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(10);
@@ -262,8 +270,6 @@ public class Level2 extends AppCompatActivity {
                             TextView tv = findViewById(progress[i]);
                             tv.setBackgroundResource(R.drawable.style_points_green);
                         }
-
-
                     } else { // если левая картинка меньше
                         if (count > 0) {
                             if (count == 1) {
@@ -284,6 +290,13 @@ public class Level2 extends AppCompatActivity {
                         }
                     }
                     if (count == 20) { //выход из уровня
+//                        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+//                        final int level = save.getInt("Level", 2);
+//                        if(level <= 2){
+//                            SharedPreferences.Editor editor = save.edit(); // Даем отредактировать элемент
+//                            editor.putInt("Level", 3);  // ложим значение уровня 2
+//                            editor.apply(); // сохранить данные
+//                        }
                         dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(10);
@@ -302,7 +315,6 @@ public class Level2 extends AppCompatActivity {
                     }
 
                 }
-
                 return true;
             }
         });

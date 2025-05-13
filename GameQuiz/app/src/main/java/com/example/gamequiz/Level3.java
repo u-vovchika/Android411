@@ -3,6 +3,7 @@ package com.example.gamequiz;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -72,7 +73,7 @@ public class Level3 extends AppCompatActivity {
         dialog.setCancelable(false); // окно нельзя закрыть кликом за пределами диалогового окна
 
         // устанавливаем картинку диалогового окна ввиде коментария
-        ImageView previewImg = dialog.findViewById(R.id.previev_img);
+        ImageView previewImg = dialog.findViewById(R.id.preview_img);
         previewImg.setImageResource(R.drawable.preview_img_3);
 
         // установка фона диалогового окна
@@ -115,6 +116,25 @@ public class Level3 extends AppCompatActivity {
 
         dialog.show(); //показать диалоговое окно
 
+//        ImageView preview_Img = findViewById(R.id.preview_img);
+//        preview_Img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+////                final int level = save.getInt("Level", 3);
+////                if(level <= 3){
+//                    SharedPreferences.Editor editor = save.edit(); // Даем отредактировать элемент
+//                    editor.putInt("Level", 4);  // ложим значение уровня 2
+//                    editor.apply(); // сохранить данные
+// //               }
+////                Intent intent = new Intent(Level3.this, Level4.class);
+////                startActivity(intent);
+////                dialogEnd.dismiss();
+//            }
+//        });
+
+
+
         // -------------------------------------------------------------------------
         // Вызов диалогового окна в конце игры
         dialogEnd = new Dialog(this);
@@ -142,16 +162,17 @@ public class Level3 extends AppCompatActivity {
                 dialogEnd.dismiss();
             }
         });
-
+        // переход на следующий уровень
         Button button_continue2 = dialogEnd.findViewById(R.id.button_continue);
         button_continue2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Level3.this, Level3.class);
+                Intent intent = new Intent(Level3.this, Level4.class);
                 startActivity(intent);
                 dialogEnd.dismiss();
             }
         });
+
 
         // -------------------------------------------------------------------------
 
@@ -241,17 +262,24 @@ public class Level3 extends AppCompatActivity {
                             }
                         }
                     }
-                    if (count == 20) { //выход из уровня
+                    if (count == 20) { //выход из уровня  // 20
+//                        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+//                        final int level = save.getInt("Level", 3);
+//                        if(level <= 3){
+//                            SharedPreferences.Editor editor = save.edit(); // Даем отредактировать элемент
+//                            editor.putInt("Level", 4);  // ложим значение уровня 2
+//                            editor.apply(); // сохранить данные
+//                        }
                         dialogEnd.show();
                     } else {
-                        numLeft = random.nextInt(21);
+                        numLeft = random.nextInt(21);  // 21
                         imgLeft.setImageResource(array.image3[numLeft]); //достаем из массива картьинку
                         imgLeft.startAnimation(animation); //запускаем анимацию для левой картики
                         textLeft.setText(array.text3[numLeft]); // достаем из массива текст
 
-                        numRight = random.nextInt(21);
+                        numRight = random.nextInt(21);  // 21
                         while (numLeft == numRight) {
-                            numRight = random.nextInt(21);
+                            numRight = random.nextInt(21);  // 21
                         }
                         imgRight.setImageResource(array.image3[numRight]); //достаем из массива картьинку
                         imgRight.startAnimation(animation); //запускаем анимацию для левой картики
@@ -315,17 +343,24 @@ public class Level3 extends AppCompatActivity {
                             }
                         }
                     }
-                    if (count == 20) { //выход из уровня
+                    if (count == 20) { //выход из уровня  20
+//                        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+//                        final int level = save.getInt("Level", 3);
+//                        if(level <= 3){
+//                            SharedPreferences.Editor editor = save.edit(); // Даем отредактировать элемент
+//                            editor.putInt("Level", 4);  // ложим значение уровня 2
+//                            editor.apply(); // сохранить данные
+//                        }
                         dialogEnd.show();
                     } else {
-                        numLeft = random.nextInt(21);
+                        numLeft = random.nextInt(21); // 21
                         imgLeft.setImageResource(array.image3[numLeft]); //достаем из массива картьинку
                         imgLeft.startAnimation(animation); //запускаем анимацию для левой картики
                         textLeft.setText(array.text3[numLeft]); // достаем из массива текст
 
-                        numRight = random.nextInt(21);
+                        numRight = random.nextInt(21);  // 21
                         while (numLeft == numRight) {
-                            numRight = random.nextInt(21);
+                            numRight = random.nextInt(21); // 21
                         }
                         imgRight.setImageResource(array.image3[numRight]); //достаем из массива картьинку
                         imgRight.startAnimation(animation); //запускаем анимацию для левой картики

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name ="lwl1_text_0">Ноль</string>
-    <string name ="lwl1_text_1">Один</string>
-    <string name ="lwl1_text_2">Два</string>
-    <string name ="lwl1_text_3">Три</string>
-    <string name ="lwl1_text_4">Четыре</string>
-    <string name ="lwl1_text_5">Пять</string>
-    <string name ="lwl1_text_6">Шесть</string>
-    <string name ="lwl1_text_7">Семь</string>
-    <string name ="lwl1_text_8">Восемь</string>
-    <string name ="lwl1_text_9">Девять</string>
+    <string name ="lwl1_text_0">Zero</string>
+    <string name ="lwl1_text_1">One</string>
+    <string name ="lwl1_text_2">two</string>
+    <string name ="lwl1_text_3">Three</string>
+    <string name ="lwl1_text_4">Four</string>
+    <string name ="lwl1_text_5">Five</string>
+    <string name ="lwl1_text_6">Six</string>
+    <string name ="lwl1_text_7">Seven</string>
+    <string name ="lwl1_text_8">Eight</string>
+    <string name ="lwl1_text_9">Nine</string>
 
     <string name ="lwl2_text_1">I</string>
     <string name ="lwl2_text_2">II</string>
@@ -44,28 +44,47 @@
     <string name ="lwl3_text_20">3/2</string>
     <string name ="lwl3_text_21">7/4</string>
 
+    <string name ="lwl4_text_1">Pear</string>
+    <string name ="lwl4_text_2">Snowman</string>
+    <string name ="lwl4_text_3">Apple</string>
+    <string name ="lwl4_text_4">Present</string>
+    <string name ="lwl4_text_5">Eggplant</string>
+    <string name ="lwl4_text_6">Carlend</string>
+    <string name ="lwl4_text_7">Carrot</string>
+    <string name ="lwl4_text_8">Deer</string>
+    <string name ="lwl4_text_9">Potato</string>
+    <string name ="lwl4_text_10">Bags</string>
+    <string name ="lwl4_text_11">Lemon</string>
+    <string name ="lwl4_text_12">Christmas tree</string>
+    <string name ="lwl4_text_13">Onion</string>
+    <string name ="lwl4_text_14">House</string>
+    <string name ="lwl4_text_15">Tomato</string>
+    <string name ="lwl4_text_16">Bag</string>
+    <string name ="lwl4_text_17">Avocado</string>
+    <string name ="lwl4_text_18">Ball</string>
+    <string name ="lwl4_text_19">Pomegranate</string>
+    <string name ="lwl4_text_20">Cap</string>
 
-    <string name ="lwl4_text_1">Груша</string>
-    <string name ="lwl4_text_2">Снеговик</string>
-    <string name ="lwl4_text_3">Яблоко</string>
-    <string name ="lwl4_text_4">Подарок</string>
-    <string name ="lwl4_text_5">Баклажан</string>
-    <string name ="lwl4_text_6">Гирлянда</string>
-    <string name ="lwl4_text_7">Морковь</string>
-    <string name ="lwl4_text_8">Олень</string>
-    <string name ="lwl4_text_9">Картофель</string>
-    <string name ="lwl4_text_10">Сумки</string>
-    <string name ="lwl4_text_11">Лимон</string>
-    <string name ="lwl4_text_12">Елка</string>
-    <string name ="lwl4_text_13">Лук</string>
-    <string name ="lwl4_text_14">Домик</string>
-    <string name ="lwl4_text_15">Помидор</string>
-    <string name ="lwl4_text_16">Мешок</string>
-    <string name ="lwl4_text_17">Авакадо</string>
-    <string name ="lwl4_text_18">Шар</string>
-    <string name ="lwl4_text_19">Гранат</string>
-    <string name ="lwl4_text_20">Шапка</string>
-
+    <string name ="lwl5_text_1">sheep</string>
+    <string name ="lwl5_text_2">Rhinoceros</string>
+    <string name ="lwl5_text_3">doggy</string>
+    <string name ="lwl5_text_4">lion</string>
+    <string name ="lwl5_text_5">Kitty</string>
+    <string name ="lwl5_text_6">Frog</string>
+    <string name ="lwl5_text_7">Horse</string>
+    <string name ="lwl5_text_8">Giraffe</string>
+    <string name ="lwl5_text_9">Cow</string>
+    <string name ="lwl5_text_10">Zebra</string>
+    <string name ="lwl5_text_11">Cock</string>
+    <string name ="lwl5_text_12">Bear</string>
+    <string name ="lwl5_text_13">Duck</string>
+    <string name ="lwl5_text_14">Elephant</string>
+    <string name ="lwl5_text_15">donkey</string>
+    <string name ="lwl5_text_16">monkey</string>
+    <string name ="lwl5_text_17">Chicken</string>
+    <string name ="lwl5_text_18">Fox</string>
+    <string name ="lwl5_text_19">piglet</string>
+    <string name ="lwl5_text_20">Bunny</string>
 
 
 </resources>
