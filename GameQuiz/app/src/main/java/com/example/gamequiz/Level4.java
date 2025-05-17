@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,14 +33,18 @@ public class Level4 extends AppCompatActivity {
     Random random = new Random(); //для генерация случайных чисел
     public int count = 0; //счетчик правильных ответов
 
-
+    private MediaPlayer sound_no, sound_yes, sound_end,sound_info;
 
     @SuppressLint({"ClickableViewAccessibility", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universal);
-
+        // звуковые эфекты
+        sound_no = MediaPlayer.create(this, R.raw.no);
+        sound_yes = MediaPlayer.create(this, R.raw.yes3);
+        sound_end = MediaPlayer.create(this, R.raw.game_over);
+        sound_info = MediaPlayer.create(this, R.raw.info4);
         // установка номера уровня
         TextView textLevels = findViewById(R.id.textView);
         textLevels.setText(R.string.level_4);
@@ -187,8 +192,10 @@ public class Level4 extends AppCompatActivity {
                     imgRight.setEnabled(false); // блокируем правую картинку
                     if (array.choice[numLeft] > array.choice[numRight]) {
                         imgLeft.setImageResource(R.drawable.img_true);
+                        sound_yes.start();
                     } else {
                         imgLeft.setImageResource(R.drawable.img_false);
+                        sound_no.start();
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {  // если отпустили палец
                     if (array.choice[numLeft] > array.choice[numRight]) {
@@ -229,6 +236,8 @@ public class Level4 extends AppCompatActivity {
                         }
                     }
                     if (count == 20) { //выход из уровня
+                        sound_end.start();
+                        sound_info.start();
                         dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(20);
@@ -260,8 +269,10 @@ public class Level4 extends AppCompatActivity {
                     imgLeft.setEnabled(false); // блокируем левую картинку
                     if (array.choice[numLeft] < array.choice[numRight]) {
                         imgRight.setImageResource(R.drawable.img_true);
+                        sound_yes.start();
                     } else {
                         imgRight.setImageResource(R.drawable.img_false);
+                        sound_no.start();
                     }
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {  // если отпустили палец
                     if (array.choice[numLeft] < array.choice[numRight]) {
@@ -298,6 +309,8 @@ public class Level4 extends AppCompatActivity {
                         }
                     }
                     if (count == 20) { //выход из уровня
+                        sound_end.start();
+                        sound_info.start();
                         dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(20);

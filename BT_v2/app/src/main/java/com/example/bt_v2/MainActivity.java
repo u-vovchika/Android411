@@ -4,7 +4,6 @@ import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -12,18 +11,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+//import com.example.bt_v2.R;
+//import com.example.bt_v2.R;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.io.InputStream;
@@ -42,58 +40,28 @@ public class MainActivity extends AppCompatActivity {
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final String DEVICE_ADDRESS = "98:DA:50:01:B4:7C"; // MAC-адрес вашего устройства
 
-    private TextView receivedDataTextView;
+    private TextView receivedDataTextView,receivedDataTextView2;
     private ImageView imageAir;
-    Button btnConnect;
+    Button btnConnect,btnSend, btnSendOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
         RelativeLayout relativeLayout = findViewById(R.id.main);
-        SwitchMaterial switchMaterial = findViewById(R.id.switchMaterialCh1);
-        switchMaterial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(switchMaterial.isChecked()) {
-                    switchMaterial.setThumbDrawable(getDrawable(R.drawable.baseline_album_24_red));
-                    switchMaterial.setText("ВКЛ");
-                    switchMaterial.setThumbTintList(ColorStateList.valueOf(Color.RED));
-                    switchMaterial.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#004CFF")));
-                    relativeLayout.setBackgroundResource(R.color.bg_red);
-                    sendData("BT01");
-
-                } else {
-                    switchMaterial.setThumbDrawable(getDrawable(R.drawable.baseline_album_24_green));
-                    switchMaterial.setText("ВЫКЛ");
-                    switchMaterial.setThumbTintList(ColorStateList.valueOf(Color.GREEN));
-                    switchMaterial.setTrackTintList(ColorStateList.valueOf(Color.parseColor("#FF6F00")));
-                    relativeLayout.setBackgroundResource(R.color.bg_green);
-                    sendData("BT00");
-
-                }
-            }
-        });
-
-
-
-
-
-
 
 //        imageAir = findViewById(R.id.imageAir);
 //        imageAir.setImageResource(R.drawable.cim_off);
 
         btnConnect = findViewById(R.id.btnConnect);
         btnConnect.setBackgroundColor(Color.parseColor("#FF00007F"));
-        Button btnSend = findViewById(R.id.btnSend);
-        Button btnSendOff = findViewById(R.id.btnSendOff);
-        Button btnReceive = findViewById(R.id.btnReceive);
+
+        btnSend = findViewById(R.id.btnSend);
+        btnSendOff = findViewById(R.id.btnSendOff);
+        //Button btnReceive = findViewById(R.id.btnReceive);
         receivedDataTextView = findViewById(R.id.receivedDataTextView);
+        receivedDataTextView2 = findViewById(R.id.receivedDataTextView2);
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         // Проверка поддержки Bluetooth
@@ -129,14 +97,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Отправка данных
         btnSend.setOnClickListener(v -> sendData("BT01"));
-
         btnSendOff.setOnClickListener(v -> sendData("BT00"));
-        btnReceive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                receiveData();
-            }
-        });
+//        btnReceive.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                receiveData();
+//            }
+//        });
 
 
     }
@@ -150,9 +117,10 @@ public class MainActivity extends AppCompatActivity {
             outputStream = bluetoothSocket.getOutputStream();
             inputStream = bluetoothSocket.getInputStream();
 
-            btnConnect.setBackgroundColor(Color.parseColor("#FF007F00"));
-            receivedDataTextView.setText("Блютуз подключен");
-            receivedDataTextView.setTextColor(Color.parseColor("#FF00DF00"));
+            btnConnect.setBackgroundColor(Color.parseColor("#FF0000FF"));
+            btnConnect.setText("Bluetooth подключен");
+            receivedDataTextView.setText("Bluetooth подключен");
+            receivedDataTextView.setTextColor(Color.parseColor("#FF00FF00"));
             Toast.makeText(this, "Подключено", Toast.LENGTH_SHORT).show();
 
             // Запуск потока для приема данных
@@ -160,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             btnConnect.setBackgroundColor(Color.BLACK);
-            receivedDataTextView.setText("Блютуз отключен");
+            receivedDataTextView.setText("Bluetooth отключен");
             receivedDataTextView.setTextColor(Color.parseColor("#FF00007F"));
             Log.e("Bluetooth", "Ошибка подключения", e);
             Toast.makeText(this, "Ошибка подключения", Toast.LENGTH_SHORT).show();
@@ -173,13 +141,16 @@ public class MainActivity extends AppCompatActivity {
                 outputStream.write(data.getBytes());
                 if (data.equals("BT01")) {
                     receivedDataTextView.setText("Включено");
-                    receivedDataTextView.setTextColor(Color.parseColor("#FFFF0000"));
+                    btnSend.setTextColor(Color.parseColor("#55000000"));
+                    btnSendOff.setTextColor(Color.parseColor("#FFFFFFFF"));
                     imageAir.setImageResource(R.drawable.cim_on);
                     Toast.makeText(this, "Включено", Toast.LENGTH_SHORT).show();
                 }
                 if (data.equals("BT00")) {
                     receivedDataTextView.setText("Выключено");
-                    receivedDataTextView.setTextColor(Color.parseColor("#FF0000FF"));
+                    btnSend.setTextColor(Color.parseColor("#FFFFFFFF"));
+                    btnSendOff.setTextColor(Color.parseColor("#55000000"));
+                    //receivedDataTextView.setTextColor(Color.parseColor("#FF0000FF"));
                     imageAir.setImageResource(R.drawable.cim_off);
                     Toast.makeText(this, "Выключено", Toast.LENGTH_SHORT).show();
                 }
@@ -200,6 +171,14 @@ public class MainActivity extends AppCompatActivity {
                 bytes = inputStream.read(buffer); // Чтение данных
                 String receivedMessage = new String(buffer, 0, bytes); // Преобразование байтов в строку
                 runOnUiThread(() -> receivedDataTextView.setText(receivedMessage)); // Обновление UI
+                if(receivedMessage.equals("Device is ON")){
+                    runOnUiThread(() -> receivedDataTextView2.setText(receivedMessage)); // Обновление UI
+                    receivedDataTextView2.setTextColor(Color.parseColor("#FFFF0000"));
+                }
+                if(receivedMessage.equals("Device is OFF")){
+                    runOnUiThread(() -> receivedDataTextView2.setText(receivedMessage)); // Обновление UI
+                    receivedDataTextView2.setTextColor(Color.parseColor("#FF0000FF"));
+                }
             } catch (Exception e) {
                 Log.e("Bluetooth", "Ошибка приема данных", e);
                 break;
