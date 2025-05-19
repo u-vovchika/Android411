@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group1">
+        <item
+            android:id="@+id/xmm_page"
+            android:title="Xmm Page"
+            android:icon="@drawable/outline_indeterminate_question_box_24"
+            />
+        <item
+            android:id="@+id/first_page"
+            android:title="First Page"
+            android:icon="@drawable/outline_looks_one_24"
+            />
+
+
+        <item
+            android:id="@+id/second_page"
+            android:title="Second Page"
+            android:icon="@drawable/outline_looks_two_24"/>
+    </group>
+    <group android:id="@+id/group2">
+        <item
+            android:id="@+id/third_page"
+            android:title="Third Page"
+            android:icon="@drawable/outline_looks_3_24"/>
+        <item
+            android:id="@+id/fourth_page"
+            android:title="Fourth Page"
+            android:icon="@drawable/outline_counter_4_24"/>
+    </group>
+</menu>

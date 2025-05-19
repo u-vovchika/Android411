@@ -1,6 +1,7 @@
 package com.example.fragmentapplication;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -15,7 +16,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 public class MainScroll extends FragmentActivity {
 
-    private static final  int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 5;
     private ViewPager2 viewPager2;
     private FragmentStateAdapter pageAdapter;
 
@@ -29,6 +30,8 @@ public class MainScroll extends FragmentActivity {
         pageAdapter = new ScreenSliderAdapter(this);
         viewPager2.setAdapter(pageAdapter);
 
+        viewPager2.setPageTransformer(new ZoomOutPageTransformer());
+
     }
 
     private class ScreenSliderAdapter extends FragmentStateAdapter {
@@ -39,7 +42,7 @@ public class MainScroll extends FragmentActivity {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            switch (position){
+            switch (position) {
                 case 0:
                     return new FragmentOne();
                 case 1:
@@ -59,6 +62,36 @@ public class MainScroll extends FragmentActivity {
         @Override
         public int getItemCount() {
             return NUM_PAGES;
+        }
+    }
+
+    private class ZoomOutPageTransformer implements ViewPager2.PageTransformer {
+
+        private static final float MIN_SCALE = 0.05f;
+        private static final float MIN_ALPHA = 0.5f;
+
+        @Override
+        public void transformPage(@NonNull View page, float position) {
+            int pageWidth = page.getWidth();
+           // int pageHeight = page.getHeight();
+            if (position < -1) {
+                page.setAlpha(0f);
+            } else if (position <= 1) {
+                float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+
+                float horizontalMargin = pageWidth * (1 - scaleFactor) / 2;
+                // перемещение по оси Х  setTranslationX
+                if (position < 0) {
+                    page.setTranslationX(horizontalMargin / 2);
+                } else {
+                    page.setTranslationX(-horizontalMargin / 2);
+                }
+                page.setScaleX(scaleFactor); // массштабирование по оси Х
+                page.setScaleY(scaleFactor); // массштабирование по оси Y
+                page.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE) / (1 - MIN_SCALE) * (1 - MIN_SCALE));
+            } else {
+                page.setAlpha(0f); //  устанавит не прозрачность
+            }
         }
     }
 }
