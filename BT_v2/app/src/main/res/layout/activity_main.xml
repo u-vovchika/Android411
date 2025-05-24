@@ -11,11 +11,13 @@
 
     <Button
         android:id="@+id/btnConnect"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/black"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:layout_marginEnd="203dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/black"
         android:text="Подключить Bluetooth" />
 
     <Button
@@ -66,6 +68,13 @@
         android:text="Полученные данные:"
         android:textSize="25sp"
         android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/btView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        app:srcCompat="@drawable/outline_bluetooth_disabled_24" />
 
 </RelativeLayout>
 

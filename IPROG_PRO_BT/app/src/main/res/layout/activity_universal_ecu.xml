@@ -11,11 +11,13 @@
 
     <LinearLayout
         android:id="@+id/containerECU"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="396dp"
+        android:layout_height="575dp"
+        android:layout_marginTop="4dp"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.231"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
@@ -34,10 +36,11 @@
 
         <LinearLayout
             android:id="@+id/container3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="365dp"
+            android:layout_height="79dp"
             android:gravity="center"
             android:orientation="horizontal">
+
 
             <Button
                 android:id="@+id/button_back_univ"
@@ -52,14 +55,13 @@
                 android:textColor="@color/dark_red"
                 android:textSize="15sp" />
 
-
             <ImageView
                 android:id="@+id/imageViewLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="228dp"
+                android:layout_height="47dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/iprog_logo" />
+                app:srcCompat="@drawable/vprog" />
 
         </LinearLayout>
 

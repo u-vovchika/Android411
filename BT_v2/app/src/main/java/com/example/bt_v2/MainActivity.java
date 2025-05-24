@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String DEVICE_ADDRESS = "98:DA:50:01:B4:7C"; // MAC-адрес вашего устройства
 
     private TextView receivedDataTextView,receivedDataTextView2;
-    private ImageView imageAir;
+    private ImageView imageAir, btView;
     Button btnConnect,btnSend, btnSendOff;
 
     @Override
@@ -54,8 +54,11 @@ public class MainActivity extends AppCompatActivity {
 //        imageAir = findViewById(R.id.imageAir);
 //        imageAir.setImageResource(R.drawable.cim_off);
 
+        btView = findViewById(R.id.btView);
+        btView.setImageResource(R.drawable.outline_bluetooth_disabled_24);
+
         btnConnect = findViewById(R.id.btnConnect);
-        btnConnect.setBackgroundColor(Color.parseColor("#FF00007F"));
+        //btnConnect.setBackgroundColor(Color.parseColor("#FF00007F"));
 
         btnSend = findViewById(R.id.btnSend);
         btnSendOff = findViewById(R.id.btnSendOff);
@@ -117,10 +120,11 @@ public class MainActivity extends AppCompatActivity {
             outputStream = bluetoothSocket.getOutputStream();
             inputStream = bluetoothSocket.getInputStream();
 
-            btnConnect.setBackgroundColor(Color.parseColor("#FF0000FF"));
+            //btnConnect.setBackgroundColor(Color.parseColor("#FF0000FF"));
             btnConnect.setText("Bluetooth подключен");
             receivedDataTextView.setText("Bluetooth подключен");
             receivedDataTextView.setTextColor(Color.parseColor("#FF00FF00"));
+            btView.setImageResource(R.drawable.outline_bluetooth_searching_24);
             Toast.makeText(this, "Подключено", Toast.LENGTH_SHORT).show();
 
             // Запуск потока для приема данных
@@ -130,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             btnConnect.setBackgroundColor(Color.BLACK);
             receivedDataTextView.setText("Bluetooth отключен");
             receivedDataTextView.setTextColor(Color.parseColor("#FF00007F"));
+            btView.setImageResource(R.drawable.outline_bluetooth_disabled_24);
             Log.e("Bluetooth", "Ошибка подключения", e);
             Toast.makeText(this, "Ошибка подключения", Toast.LENGTH_SHORT).show();
         }
@@ -205,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 connectToDevice(); // Повторное подключение после получения разрешений
             } else {
+                btView.setImageResource(R.drawable.outline_bluetooth_disabled_24);
                 Toast.makeText(this, "Разрешения не предоставлены", Toast.LENGTH_SHORT).show();
             }
         }

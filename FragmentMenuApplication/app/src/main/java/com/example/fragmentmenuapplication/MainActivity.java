@@ -39,20 +39,28 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.first_page){
+                if (item.getItemId() == R.id.first_page) {
                     replaceFragment(new FirstPage());
                     drawerLayout.closeDrawer(GravityCompat.START); // закрываем выплывающую страницу
                 } else if (item.getItemId() == R.id.second_page) {
                     replaceFragment(new SecondPage());
                     drawerLayout.closeDrawer(GravityCompat.START); // закрываем выплывающую страницу
+                } else if (item.getItemId() == R.id.third_page) {
+                    replaceFragment(new ThirdPage());
+                    drawerLayout.closeDrawer(GravityCompat.START); // закрываем выплывающую страницу
+                } else if (item.getItemId() == R.id.fourth_page) {
+                    replaceFragment(new FourthPage());
+                    drawerLayout.closeDrawer(GravityCompat.START); // закрываем выплывающую страницу
                 }
+
+
                 return false;
             }
         });
 
     }
 
-    private void replaceFragment(Fragment fragment){
+    private void replaceFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();

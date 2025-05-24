@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_blue">
+    android:background="@color/dark_blue"
+
+    >
 
 
 
@@ -26,11 +28,10 @@
 
             <LinearLayout
                 android:id="@+id/container3"
-                android:layout_width="match_parent"
+                android:layout_width="357dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:gravity="center"
-                >
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button_back"
@@ -47,12 +48,11 @@
 
                 <ImageView
                     android:id="@+id/imageViewLogo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="260dp"
+                    android:layout_height="47dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/iprog_logo"
-                    />
+                    app:srcCompat="@drawable/vprog" />
 
             </LinearLayout>
 

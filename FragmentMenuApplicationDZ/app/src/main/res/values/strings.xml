@@ -5,4 +5,20 @@
 
     <string name="drawer_close">Close Drawer</string>
     <string name="drawer_open">Open Drawer</string>
+
+    <string-array name="cities">
+        <item>Москва</item>
+        <item>Брест</item>
+        <item>Сталинград</item>
+        <item>Киев</item>
+        <item>Тула</item>
+    </string-array>
+    <string-array name="cities_photo">
+        <item>Moscow</item>
+        <item>Brest</item>
+        <item>Stalingrad</item>
+        <item>Kyiv</item>
+        <item>Tula</item>
+    </string-array>
+
 </resources>
