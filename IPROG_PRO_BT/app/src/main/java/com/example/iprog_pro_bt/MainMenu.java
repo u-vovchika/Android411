@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenu extends AppCompatActivity {
 
-    TextView textAcura, textAudi, textBmw,
+    TextView textObd2, textAudi, textBmw,
             textCadillac, textChevrolet, textChina,
             textFiat, textFord, textHonda,
             textJaguar,textKiaHyundai,textLada,
@@ -44,7 +44,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
         //////////////////////////////////////////////////////////////////////
-        textAcura = findViewById(R.id.textAcura);
+        textObd2 = findViewById(R.id.textObd2);
         textAudi = findViewById(R.id.textAudi);
         textBmw = findViewById(R.id.textBmw);
         textCadillac = findViewById(R.id.textCadillac);
@@ -80,14 +80,14 @@ public class MainMenu extends AppCompatActivity {
         }
 
 
-        textAcura.setOnClickListener(new View.OnClickListener() {
+        textObd2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(KEY_MODEL, textAcura.getText().toString());
+                editor.putString(KEY_MODEL, textObd2.getText().toString());
                 editor.apply();
                 finish();// завершения процесса
-                Intent intent = new Intent(MainMenu.this, UniversalSet.class);
+                Intent intent = new Intent(MainMenu.this, UniversalOBD2.class);
                 startActivity(intent);
                 Toast.makeText(MainMenu.this, "Model Acura success", Toast.LENGTH_SHORT).show();
             }

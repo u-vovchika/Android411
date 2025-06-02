@@ -31,4 +31,7 @@
     <string name="Special_function">Специальные функции</string>
     <string name="Erase_CRASH">Удалить СТОЛКНОВЕНИЕ</string>
     <string name="renault_srs_spc560_can">Renault_SRS_SPC560_CAN</string>
+    <string name="obdii">OBDII</string>
+    <string name="audi">Audi</string>
+    <string name="obdii_data_read_erase">OBDII</string>
 </resources>

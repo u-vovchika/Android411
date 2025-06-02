@@ -9,9 +9,6 @@
     >
 
 
-
-
-
     <LinearLayout
         android:id="@+id/container1"
         android:layout_width="match_parent"
@@ -70,227 +67,220 @@
                         android:id="@+id/line1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textAcura"
+                            android:id="@+id/textObd2"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="@string/acura"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="@string/obdii"
                             android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textAudi"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Audi"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="@string/audi"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textBmw"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="BMW"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="BMW"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/line2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textCadillac"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Cadilac"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Cadilac"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textChevrolet"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Chevrolet"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Chevrolet"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textChina"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="@string/china"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="@string/china"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/line3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textFiat"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Fiat"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Fiat"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textFord"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Ford"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Ford"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textHonda"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Honda"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Honda"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/line4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textJaguar"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Jaguar"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Jaguar"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textKiaHyundai"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Kia-Hyundai"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Kia-Hyundai"
                             android:textColor="@color/white"
                             android:textSize="13sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textLada"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Lada"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Lada"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/line5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textLandRover"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Land Rover"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Land Rover"
                             android:textColor="@color/white"
                             android:textSize="13sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textMazda"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Mazda"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Mazda"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textMercedes"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Mercedes"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Mercedes"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
 
@@ -298,92 +288,88 @@
                         android:id="@+id/line6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textMitsubishi"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Mitsibishi"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Mitsibishi"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textNissan"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Nissan"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Nissan"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textPsa"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="PSA"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="PSA"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/line7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textRenault"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Renault"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Renault"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textSubaru"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Subaru"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Subaru"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textSuzuki"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Suzuki"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Suzuki"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -391,92 +377,88 @@
                         android:id="@+id/line8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textToyota"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Toyota"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Toyota"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textUaz"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="UAZ"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="UAZ"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textVag"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="VAG"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="VAG"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/line9"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textVolvo"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="Volvo"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="Volvo"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/textView26"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="__"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="__"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView27"
                             android:layout_width="100dp"
                             android:layout_height="60dp"
-                            android:text="__"
                             android:layout_margin="10dp"
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
+                            android:text="__"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
 
@@ -487,13 +469,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

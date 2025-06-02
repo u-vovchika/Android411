@@ -14,9 +14,8 @@
         android:id="@+id/dateInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Delect Date"
         android:layout_marginTop="90dp"
-        />
+        android:hint="Delect Date" />
 
     <EditText
         android:id="@+id/timeInput"
@@ -28,10 +27,10 @@
         android:id="@+id/divider3"
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="?android:attr/listDivider"
-        android:backgroundTint="@color/green"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/green" />
 
     <EditText
         android:id="@+id/editText"
@@ -43,11 +42,49 @@
         android:id="@+id/add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Добавить"
-        android:backgroundTint="@color/orange"/>
+        android:backgroundTint="@color/orange"
+        android:text="Добавить" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal" />
+
+    <ImageButton
+        android:id="@+id/before"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/outline_skip_next_24"
+
+        />
+
+    <ImageSwitcher
+        android:id="@+id/imageSwitcher"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:inAnimation="@android:anim/slide_in_left"
+        android:outAnimation="@android:anim/slide_out_right"/>
+
+<!--        android:inAnimation="@anim/slide_in"-->
+<!--        android:outAnimation="@anim/slide_out"     -->
+
+
+
+    <ImageButton
+        android:id="@+id/next"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/outline_skip_next_24"
+
+        />
+
+
 </LinearLayout>

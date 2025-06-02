@@ -41,12 +41,19 @@ public class MainActivity extends AppCompatActivity {
     // UUID для SPP (Serial Port Profile)
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     //private static final String DEVICE_ADDRESS = "98:DA:50:01:B4:7C"; // MAC-адрес вашего устройства
-    // private static final String DEVICE_ADDRESS = "00:1D:A5:05:EE:47"; // MAC-адрес вашего устройства
+     //private static final String DEVICE_ADDRESS = "00:1D:A5:05:EE:47"; // MAC-адрес вашего устройства
     private static final String DEVICE_ADDRESS = "66:1E:11:8D:ED:7D"; // MAC-адрес вашего устройства КРАСНОГО АДАПТЕРА
 
     private TextView receivedDataTextView, receivedDataTextView2;
     private ImageView imageAir;
     Button btnConnect;
+
+
+    // AT Z [reset all]  команда сброса сканера, всех его настроек до завода
+    // AT E0 отключение эхо
+    // AT E1 включение эхо
+    // AT RV напряжение питания на адаптере
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         btnConnect = findViewById(R.id.btnConnect);
         btnConnect.setBackgroundColor(Color.parseColor("#FF00007F"));
         Button btnSend = findViewById(R.id.btnSend);
-        Button btnSendOff = findViewById(R.id.btnSendOff);
-        Button btnReceive = findViewById(R.id.btnReceive);
+        Button btnSendIdent = findViewById(R.id.btnSendIdent);
+        Button btnSendVin = findViewById(R.id.btnSendVin);
         receivedDataTextView = findViewById(R.id.receivedDataTextView);
         receivedDataTextView2 = findViewById(R.id.receivedDataTextView2);
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -69,14 +76,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ////////////////////////////////////////
+        /// Проверяем, есть ли у приложения
+        /// разрешение на использование Bluetooth и
+        /// доступ к геолокации
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // Запрос разрешений
+            // Если одно из разрешений не предоставлено, запрашиваем необходимые разрешения у пользователя
             ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.BLUETOOTH,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-            }, REQUEST_PERMISSIONS);
+                    Manifest.permission.BLUETOOTH,// Разрешение на использование Bluetooth
+                    Manifest.permission.ACCESS_FINE_LOCATION// Разрешение на доступ к геолокации
+            }, REQUEST_PERMISSIONS);// REQUEST_PERMISSIONS - код запроса разрешений
         } else {
+            // Если все необходимые разрешения уже предоставлены, выполняем подключение к устройству
             connectToDevice(); // Подключение к устройству
         }
         /////////////////////////////////////////////
@@ -90,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }, REQUEST_PERMISSIONS);
             } else {
                 connectToDevice(); // Подключение к устройству
+
             }
         });
 
@@ -97,33 +109,55 @@ public class MainActivity extends AppCompatActivity {
         // Отправка данных
         //btnSendOnn.setOnClickListener(v -> sendData("BT01"));
 
-        btnSendOff.setOnClickListener(v -> sendDataApi("ATZ\rATE0\r"));
-        //btnSend.setOnClickListener(v -> sendData((byte) 0x41,(byte) 0x54,0x5A,0x0D,0x41,0x54,0x45,0x30,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D));
-        // В методе onCreate добавьте обработчик для btnSend
-        btnSend.setOnClickListener(v -> {
-            // Создайте массив байтов для передачи
-            byte[] dataToSend = new byte[]{
-                    (byte) 0x41, // 0x725 - это 0x72 и 0x05 в двух байтах
-                    (byte) 0x54,
-                    (byte) 0x5A,
-                    (byte) 0x0D,
-                    (byte) 0x41,
-                    (byte) 0x54,
-                    (byte) 0x45,
-                    (byte) 0x30,
-                    (byte) 0x0D
-            };
+        btnSend.setOnClickListener(v -> sendDataApi("ATRV\r"));
+        btnSendIdent.setOnClickListener(v -> sendDataApi("ST1\r"));
+//       btnSendVin.setOnClickListener(v -> sendDataApi("0100\r"));
 
-            sendData(dataToSend); // Отправка данных
-        });
+//        //btnSend.setOnClickListener(v -> sendData((byte) 0x41,(byte) 0x54,0x5A,0x0D,0x41,0x54,0x45,0x30,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D,0x0D));
+//        // В методе onCreate добавьте обработчик для btnSend
+//        btnSend.setOnClickListener(v -> {
+//            // Создайте массив байтов для передачи
+//            byte[] dataToSend = new byte[]{
+//                    (byte) 0x41, // 0x725 - это 0x72 и 0x05 в двух байтах
+//                    (byte) 0x54,
+//                    (byte) 0x5A,
+//                    (byte) 0x0D,
+//                    (byte) 0x41,
+//                    (byte) 0x54,
+//                    (byte) 0x45,
+//                    (byte) 0x30,
+//                    (byte) 0x0D
+//            };
+//
+//            sendData(dataToSend); // Отправка данных
+//        });
 
 
-        btnReceive.setOnClickListener(new View.OnClickListener() {
+        btnSendVin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                receiveData();
+               // receiveData();
+
+
+
+                sendDataApi("ST1\r");
+                sendDataApi("VT1\r");
+                sendDataApi("ATD\r");
+                sendDataApi("ATD0\r");
+                sendDataApi("ATE0\r");
+                sendDataApi("ATH1\r");
+                sendDataApi("ATSP0\r");
+                sendDataApi("ATE0\r");
+                sendDataApi("ATH1\r");
+                sendDataApi("ATM0\r");
+                sendDataApi("ATS0\r");
+                sendDataApi("ATAT1\r");
+                sendDataApi("ATAL\r");
+                sendDataApi("ATST64\r");
+                sendDataApi("0100\r");
             }
         });
+
     }
 
     private void connectToDevice() {
@@ -139,6 +173,9 @@ public class MainActivity extends AppCompatActivity {
             receivedDataTextView.setText("Блютуз подключен");
             receivedDataTextView.setTextColor(Color.parseColor("#FF00FF00"));
             Toast.makeText(this, "Подключено", Toast.LENGTH_SHORT).show();
+
+            sendDataApi("ATZ\rATE0\r");
+
 
             // Запуск потока для приема данных
             new Thread(this::receiveData).start();
@@ -174,19 +211,21 @@ public class MainActivity extends AppCompatActivity {
         if (outputStream != null) {
             try {
                 outputStream.write(data.getBytes());
-                if (data.equals("ELM2")) {
-                    receivedDataTextView.setText("Включено");
-                    receivedDataTextView.setTextColor(Color.parseColor("#FFFF0000"));
-                    imageAir.setImageResource(R.drawable.cim_on);
-                    Toast.makeText(this, "Включено", Toast.LENGTH_SHORT).show();
-                }
-                if (data.equals("ATI")) {
-                    receivedDataTextView.setText("Выключено");
-                    receivedDataTextView.setTextColor(Color.parseColor("#FF0000FF"));
-                    imageAir.setImageResource(R.drawable.cim_off);
-                    Toast.makeText(this, "Выключено", Toast.LENGTH_SHORT).show();
-                }
+//                if (data.equals("ELM2")) {
+//                    receivedDataTextView.setText("Включено");
+//                    receivedDataTextView.setTextColor(Color.parseColor("#FFFF0000"));
+//                    imageAir.setImageResource(R.drawable.cim_on);
+//                    Toast.makeText(this, "Включено", Toast.LENGTH_SHORT).show();
+//                }
+//                if (data.equals("ATI")) {
+//                    receivedDataTextView.setText("Выключено");
+//                    receivedDataTextView.setTextColor(Color.parseColor("#FF0000FF"));
+//                    imageAir.setImageResource(R.drawable.cim_off);
+//                    Toast.makeText(this, "Выключено", Toast.LENGTH_SHORT).show();
+//                }
                 Toast.makeText(this, "Данные отправлены", Toast.LENGTH_SHORT).show();
+                //receiveData();
+
             } catch (Exception e) {
                 Log.e("Bluetooth", "Ошибка отправки данных", e);
                 Toast.makeText(this, "Ошибка отправки данных", Toast.LENGTH_SHORT).show();
@@ -205,23 +244,26 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(() -> receivedDataTextView.setText(receivedMessage)); // Обновление UI
                 /// ////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
                 if (bytes == -1) {
                     // Если bytes равен -1, это означает конец потока
                     Log.e("Bluetooth", "Конец потока данных");
                     break;
                 }
 
-                // Создаем строку с шестнадцатеричным представлением полученных байтов
-                StringBuilder hexString = new StringBuilder();
-                for (int i = 0; i < bytes; i++) {
-                    hexString.append(String.format("%02X ", buffer[i])); // Форматируем байты в шестнадцатеричном виде
-                }
 
-                // Обновляем UI с полученными данными в байтах
-                runOnUiThread(() -> receivedDataTextView2.setText(hexString.toString()));
-
-
-                /// ////////////////////////////////////////////////////////////////////////////////
+//                ///   /////////////////////////////////////////////////////////////////////////////
+//                // Создаем строку с шестнадцатеричным представлением полученных байтов
+//                StringBuilder hexString = new StringBuilder();
+//                for (int i = 0; i < bytes; i++) {
+//                    hexString.append(String.format("%02X ", buffer[i])); // Форматируем байты в шестнадцатеричном виде
+//                }
+//                // Обновляем UI с полученными данными в байтах
+//                runOnUiThread(() -> receivedDataTextView2.setText(hexString.toString()));
+//                /// ////////////////////////////////////////////////////////////////////////////////
 
             } catch (Exception e) {
                 Log.e("Bluetooth", "Ошибка приема данных", e);

@@ -18,14 +18,14 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/green"
         android:text="Bluetooth"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 
     <Button
         android:id="@+id/btnSend"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/btnConnect"
         android:layout_alignParentStart="true"
         android:layout_margin="10dp"
@@ -33,41 +33,39 @@
         android:layout_marginTop="-53dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="@color/design_default_color_secondary_variant"
-        android:text="ВКЛ"
-        android:textSize="25sp"
+        android:text="Напр"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnSendOff"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
-        android:layout_below="@+id/btnConnect"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="-53dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/design_default_color_secondary_variant"
-        android:text="ВЫКЛ"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnReceive"
+        android:id="@+id/btnSendIdent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnSendOff"
+        android:layout_below="@+id/btnSend"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-153dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/design_default_color_secondary_variant"
+        android:text="Идент"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSendVin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSendIdent"
         android:layout_margin="10dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="10dp"
-        android:text="Получить данные" />
+        android:text="VIN" />
 
     <TextView
         android:id="@+id/receivedDataTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnReceive"
+        android:layout_below="@id/btnSendVin"
         android:layout_margin="10dp"
         android:layout_marginTop="165dp"
         android:layout_marginBottom="10dp"
@@ -82,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/receivedDataTextView"
         android:layout_margin="10dp"
-        android:layout_marginTop="165dp"
+        android:layout_marginTop="140dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="Полученные данные 2:"
