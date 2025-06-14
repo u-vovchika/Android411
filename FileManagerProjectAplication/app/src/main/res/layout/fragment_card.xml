@@ -9,25 +9,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="100dp">
 
         <ImageView
-            android:id="@+id/img_back"
+            android:id="@+id/img_back_card"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/baseline_arrow_drop_down_circle_24"
             android:padding="14dp"/>
 
         <TextView
-            android:id="@+id/tv_path_holder"
+            android:id="@+id/tv_path_holder_card"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="100dp"
             android:text="Path/"
             android:textSize="18sp"
+            android:textStyle="bold"
             android:gravity="center_vertical"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_internal"
+        android:id="@+id/recycler_internal_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

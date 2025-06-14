@@ -21,6 +21,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.filemanagerprojectaplication.FileAdapter;
+import com.example.filemanagerprojectaplication.OnFileSelectedListener;
 import com.example.filemanagerprojectaplication.R;
 
 import java.io.File;
@@ -28,13 +30,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class InternalFragment extends Fragment {
+public class InternalFragment extends Fragment implements OnFileSelectedListener {
 
+    private FileAdapter fileAdapter;
     private RecyclerView recyclerView;
     private List<File> fileList;
     private ImageView ingBack;
     TextView tvPathHolder;
     File storage;
+    String data;
     View view;
 
     @Override
@@ -49,7 +53,12 @@ public class InternalFragment extends Fragment {
         String internalStorage = System.getenv("EXTERNAL_STORAGE");
         storage = new File(internalStorage);
 
-        tvPathHolder.setText(storage.getAbsolutePath());
+        if (getArguments() != null) {
+            data = getArguments().getString("path");
+            storage = new File(data);
+        }
+
+        tvPathHolder.setText("Внутренняя память: " + storage.getAbsolutePath());
         runtimePermission();
 
         return view;
@@ -74,7 +83,7 @@ public class InternalFragment extends Fragment {
                 try {
                     Uri uri = Uri.fromParts("package", getActivity().getPackageName(),
                             null);
-                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
                     intent.setData(uri);
                     intent.addCategory("android.intent.category.DEFAULT");
                     intent.setData(Uri.parse(String.format("package:%s", getActivity().getPackageName())));
@@ -82,11 +91,11 @@ public class InternalFragment extends Fragment {
 
                 } catch (Exception e) {
                     Intent intent = new Intent();
-                    intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    intent.setAction(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
                     getActivity().startActivityIfNeeded(intent, 101);
                 }
             }
-            if (!Environment.isExternalStorageManager()) {
+            if (Environment.isExternalStorageManager()) {
                 displayFiles();
             }
         }
@@ -124,5 +133,27 @@ public class InternalFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         fileList = new ArrayList<>();
         fileList.addAll(findFiles(storage));
+        //System.out.println("!!!!!!!!!" + fileList);
+
+        fileAdapter = new FileAdapter(getContext(), fileList, this);
+        recyclerView.setAdapter(fileAdapter);
+
+    }
+
+    @Override
+    public void onFileClicked(File file) {
+        if (file.isDirectory()) {
+            Bundle bundle = new Bundle();
+            bundle.putString("path", file.getAbsolutePath());
+            InternalFragment internalFragment = new InternalFragment();
+            internalFragment.setArguments(bundle);
+
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, internalFragment).addToBackStack(null).commit();
+        }
+    }
+
+    @Override
+    public void onFileLongClicked(File file) {
+
     }
 }

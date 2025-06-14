@@ -34,4 +34,12 @@
     <string name="obdii">OBDII</string>
     <string name="audi">Audi</string>
     <string name="obdii_data_read_erase">OBDII</string>
+    <string name="CarCadio">Радио</string>
+    <string name="renault_carradio">Renault CarRadio</string>
+    <string name="renault_code_security">Renault Code Security</string>
+    <string name="calculate">Рассчитать</string>
+    <string name="set_security_code">Введите Security CODE:</string>
+    <string name="help">Help</string>
+    <string name="renault_radio_calc">Renault Radio Calc</string>
+    <string name="renault_radio_calc_help">renault_radio_calc_help</string>
 </resources>

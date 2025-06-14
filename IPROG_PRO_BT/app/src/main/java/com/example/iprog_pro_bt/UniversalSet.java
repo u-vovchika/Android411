@@ -24,6 +24,8 @@ public class UniversalSet extends AppCompatActivity {
     private static final String KEY_MODEL = "model";
    // private static final String KEY_ECU = "ecu";
     private static final String KEY_SRS = "srs";
+    private static final String KEY_RADIO = "CarRadio";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,21 @@ public class UniversalSet extends AppCompatActivity {
             }
         });
 
+        /// ///textViewCarRadio///////////////////////////////////////////////////////////
+        TextView textViewCarRadio = findViewById(R.id.textViewCarRadio);
 
+        textViewCarRadio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(KEY_RADIO, textViewCarRadio.getText().toString());
+                editor.apply();
+
+                Intent intent = new Intent(UniversalSet.this, UniversalCARRADIO.class);
+                startActivity(intent);
+                Toast.makeText(UniversalSet.this, "Model Radio success", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 

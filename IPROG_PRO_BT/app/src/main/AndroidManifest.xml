@@ -16,6 +16,15 @@
         android:theme="@style/Theme.IPROG_PRO_BT"
         tools:targetApi="31">
         <activity
+            android:name=".RenaultCarradioFinalHelp"
+            android:exported="false" />
+        <activity
+            android:name=".RenaultCarradioFinal"
+            android:exported="false" />
+        <activity
+            android:name=".UniversalCARRADIO"
+            android:exported="false" />
+        <activity
             android:name=".UniversalOBD2"
             android:exported="false" />
         <activity

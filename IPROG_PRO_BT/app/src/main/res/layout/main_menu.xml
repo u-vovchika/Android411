@@ -90,7 +90,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="@string/audi"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -102,7 +102,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="BMW"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -122,7 +122,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Cadilac"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -134,7 +134,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Chevrolet"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -146,7 +146,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="@string/china"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -166,7 +166,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Fiat"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -178,7 +178,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Ford"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -190,7 +190,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Honda"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -210,7 +210,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Jaguar"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -222,7 +222,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Kia-Hyundai"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -234,7 +234,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Lada"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -254,7 +254,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Land Rover"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
@@ -266,7 +266,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Mazda"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -278,7 +278,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Mercedes"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -299,7 +299,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Mitsibishi"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -311,7 +311,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Nissan"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -323,7 +323,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="PSA"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -355,7 +355,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Subaru"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -367,7 +367,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Suzuki"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -388,7 +388,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Toyota"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -400,7 +400,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="UAZ"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -412,7 +412,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="VAG"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -432,7 +432,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="Volvo"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -444,7 +444,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="__"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -456,7 +456,7 @@
                             android:background="@drawable/button_stroke_dark_red_press_white"
                             android:gravity="center"
                             android:text="__"
-                            android:textColor="@color/white"
+                            android:textColor="@color/gray"
                             android:textSize="15sp"
                             android:textStyle="bold" />
                     </LinearLayout>

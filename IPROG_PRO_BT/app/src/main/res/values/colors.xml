@@ -6,5 +6,13 @@
     <color name="black_middle">#60000000</color>
     <color name="dark_red">#FFFF0000</color>
     <color name="dark_blue">#FF00001A</color>
-    <color name="green">#FF07A200</color>
+    <color name="green">#FF00FF00</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="pink">#FFFF00FF</color>
+    <color name="gray">#FF707070</color>
+    <color name="light_gray">#FFC0C0C0</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="burgundy">#FF7F007F</color>
+
+
 </resources>

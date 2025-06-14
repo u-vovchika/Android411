@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.filemanagerprojectaplication.FileAdapter;
+import com.example.filemanagerprojectaplication.OnFileSelectedListener;
 import com.example.filemanagerprojectaplication.R;
 
 import java.io.File;
@@ -30,39 +30,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CardFragment extends Fragment {
+public class CardFragment extends Fragment implements OnFileSelectedListener{
 
-    private RecyclerView recyclerView;
-    private List<File> fileList;
-    private ImageView ingBack;
-    TextView tvPathHolder;
-    File storage;
+    private FileAdapter fileAdapter;
+    private RecyclerView recyclerViewCard;
+    private List<File> fileListCard;
+    private ImageView imgBackCard;
+    private TextView tvPathHolderCard;
+
+    String dataCard;
+    File storageCard; /// pathSd
+    File[] storageCard2;  /// mmm
+    String pathSpl = ""; /// pathToSD
     View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_internal, container, false);
+        view = inflater.inflate(R.layout.fragment_card, container, false);
+        /// доступ к переменным
+        imgBackCard = view.findViewById(R.id.img_back_card);
+        tvPathHolderCard = view.findViewById(R.id.tv_path_holder_card);
 
-        ingBack = view.findViewById(R.id.img_back);
-        tvPathHolder = view.findViewById(R.id.tv_path_holder);
+        /// Получаем доступ к внешним директориям хранения, доступным на устройстве /////
+        storageCard2 = ContextCompat.getExternalFilesDirs(requireContext(), null);
+        /// Проверяем, есть ли несколько директорий хранения (как минимум 2)
+        if(storageCard2.length > 1 && storageCard2[1] != null){
+            String storageCardElement = storageCard2[1].getPath(); /// Получаем путь ко второй директории хранения (SD-карте)
+            /// Разделяем путь на части, чтобы извлечь соответствующую информацию
+            String[] pathCard = storageCardElement.split("/");
 
-        // Получаем доступ к внутренней SD-карте
-        //String internalStorage = System.getenv("EXTERNAL_STORAGE");
-
-        // Получаем доступ к внешней SD-карте
-
-        String storageState = Environment.getExternalStorageState();
-        Environment.MEDIA_MOUNTED.equals(storageState);
-
-        storage = new File(storageState);
-
-
-        tvPathHolder.setText(storage.getAbsolutePath());
-        runtimePermission();
+            /// Проверяем, содержит ли разделенный путь как минимум 3 элемента
+            if(pathCard.length >= 3) {
+                /// Формируем строку пути, используя первые три части пути
+                pathSpl = pathCard[0] + "/" + pathCard[1] + "/" + pathCard[2];
+                /// Отображаем сформированный путь в TextView
+                tvPathHolderCard.setText("Path SD: " + pathSpl);
+                /// Создаем объект File для сформированного пути
+                storageCard = new File(pathSpl);
+                runtimePermission(); /// вызов метода запроса разрешений
+            } else {
+                /// Если путь не содержит достаточного количества элементов, отображаем сообщение об ошибке
+                tvPathHolderCard.setText("Path SD: " + "SD card извлечена.");
+            }
+        } else {
+            /// Если нет второй директории хранения, отображаем сообщение об ошибке
+            tvPathHolderCard.setText("Path(1) SD: " + "SD card извлечена.");
+        }
+        /// ////////////////////////////////////////////////////
+        if(getArguments() != null){
+            dataCard = getArguments().getString("path");
+            storageCard = new File(dataCard);
+        }
 
         return view;
     }
+
     private void runtimePermission() {
         //разрешение до Android 10 (API 29)
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
@@ -80,26 +103,24 @@ public class CardFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (!Environment.isExternalStorageManager()) {
                 try {
-                    Uri uri = Uri.fromParts("package", getActivity().getPackageName(),
-                            null);
-                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
                     intent.setData(uri);
                     intent.addCategory("android.intent.category.DEFAULT");
                     intent.setData(Uri.parse(String.format("package:%s", getActivity().getPackageName())));
                     getActivity().startActivityIfNeeded(intent, 101);
-
                 } catch (Exception e) {
                     Intent intent = new Intent();
-                    intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    intent.setAction(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
                     getActivity().startActivityIfNeeded(intent, 101);
                 }
             }
-            if (!Environment.isExternalStorageManager()) {
+            if (Environment.isExternalStorageManager()) {
                 displayFiles();
             }
         }
-
     }
+
     public ArrayList<File> findFiles(File file) {
         ArrayList<File> arrayList = new ArrayList<>();
         File[] files = file.listFiles();
@@ -127,10 +148,32 @@ public class CardFragment extends Fragment {
     }
 
     private void displayFiles() {
-        recyclerView = view.findViewById(R.id.recycler_internal);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        fileList = new ArrayList<>();
-        fileList.addAll(findFiles(storage));
+        recyclerViewCard = view.findViewById(R.id.recycler_internal_card);
+        recyclerViewCard.setHasFixedSize(true);
+        recyclerViewCard.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        fileListCard = new ArrayList<>();
+        fileListCard.addAll(findFiles(storageCard));
+//        System.out.println("&&&&&&&" + fileListCard);
+        fileAdapter = new FileAdapter(getContext(), fileListCard, this);
+        recyclerViewCard.setAdapter(fileAdapter);
     }
+
+    @Override
+    public void onFileClicked(File file) {
+        if(file.isDirectory()){
+            Bundle bundle = new Bundle();
+            bundle.putString("path", file.getAbsolutePath());
+            InternalFragment internalFragment = new InternalFragment();
+            internalFragment.setArguments(bundle);
+
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, internalFragment).addToBackStack(null).commit();
+        }
+    }
+
+    @Override
+    public void onFileLongClicked(File file) {
+
+    }
+
 }
+
