@@ -1,6 +1,9 @@
 package com.example.filemanagerprojectaplication.fragments;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -15,22 +18,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
 import android.provider.Settings;
+import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.filemanagerprojectaplication.FileAdapter;
+import com.example.filemanagerprojectaplication.FileOpener;
 import com.example.filemanagerprojectaplication.OnFileSelectedListener;
 import com.example.filemanagerprojectaplication.R;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
-public class CardFragment extends Fragment implements OnFileSelectedListener{
+public class CardFragment extends Fragment implements OnFileSelectedListener {
 
     private FileAdapter fileAdapter;
     private RecyclerView recyclerViewCard;
@@ -39,10 +49,11 @@ public class CardFragment extends Fragment implements OnFileSelectedListener{
     private TextView tvPathHolderCard;
 
     String dataCard;
-    File storageCard; /// pathSd
-    File[] storageCard2;  /// mmm
-    String pathSpl = ""; /// pathToSD
+    File storageCard;
+    File[] storageCard2;
+    String pathSpl = "";
     View view;
+    String[] items = {"Details", "Rename", "Delete"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,13 +66,13 @@ public class CardFragment extends Fragment implements OnFileSelectedListener{
         /// Получаем доступ к внешним директориям хранения, доступным на устройстве /////
         storageCard2 = ContextCompat.getExternalFilesDirs(requireContext(), null);
         /// Проверяем, есть ли несколько директорий хранения (как минимум 2)
-        if(storageCard2.length > 1 && storageCard2[1] != null){
+        if (storageCard2.length > 1 && storageCard2[1] != null) {
             String storageCardElement = storageCard2[1].getPath(); /// Получаем путь ко второй директории хранения (SD-карте)
             /// Разделяем путь на части, чтобы извлечь соответствующую информацию
             String[] pathCard = storageCardElement.split("/");
 
             /// Проверяем, содержит ли разделенный путь как минимум 3 элемента
-            if(pathCard.length >= 3) {
+            if (pathCard.length >= 3) {
                 /// Формируем строку пути, используя первые три части пути
                 pathSpl = pathCard[0] + "/" + pathCard[1] + "/" + pathCard[2];
                 /// Отображаем сформированный путь в TextView
@@ -78,7 +89,7 @@ public class CardFragment extends Fragment implements OnFileSelectedListener{
             tvPathHolderCard.setText("Path(1) SD: " + "SD card извлечена.");
         }
         /// ////////////////////////////////////////////////////
-        if(getArguments() != null){
+        if (getArguments() != null) {
             dataCard = getArguments().getString("path");
             storageCard = new File(dataCard);
         }
@@ -160,19 +171,119 @@ public class CardFragment extends Fragment implements OnFileSelectedListener{
 
     @Override
     public void onFileClicked(File file) {
-        if(file.isDirectory()){
+        if (file.isDirectory()) {
+//            Bundle bundle = new Bundle();
+//            bundle.putString("path", file.getAbsolutePath());
+//            CardFragment cardFragment = new CardFragment();
+//            cardFragment.setArguments(bundle);
+//
+//            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, cardFragment).addToBackStack(null).commit();
+
+
             Bundle bundle = new Bundle();
             bundle.putString("path", file.getAbsolutePath());
             InternalFragment internalFragment = new InternalFragment();
             internalFragment.setArguments(bundle);
 
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, internalFragment).addToBackStack(null).commit();
+
+
+
+        } else {
+            FileOpener.openFile(getContext(), file);
         }
     }
 
     @Override
     public void onFileLongClicked(File file) {
+        final Dialog optionDialogCard = new Dialog(getContext());
+        optionDialogCard.setContentView(R.layout.option_dialog);
+        optionDialogCard.setTitle("Select Options");
+        ListView optionCard = optionDialogCard.findViewById(R.id.list);
 
+        CustomAdapterCard customAdapterCard = new CustomAdapterCard();
+        optionCard.setAdapter(customAdapterCard);
+        optionDialogCard.show();
+
+        optionCard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItemCard = parent.getItemAtPosition(position).toString();
+                switch (selectedItemCard) {
+                    case "Details":
+                        AlertDialog.Builder detailDialog = new AlertDialog.Builder(getContext());
+                        detailDialog.setTitle("Details:");
+                        final TextView details = new TextView(getContext());
+                        detailDialog.setView(details);
+                        Date lastModified = new Date(file.lastModified());
+                        SimpleDateFormat formatted = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        String formattedDate = formatted.format(lastModified);
+
+//                        details.setText(String.format(
+//                                "File Name: " + file.getName() + "\n" +
+//                                        "Size: " + Formatter.formatShortFileSize(getContext(), file.length()) + "\n" +
+//                                        "Path: " + file.getAbsolutePath() + "\n" +
+//                                        "Last Modified: " + formattedDate));
+
+                        details.setText(String.format("File Name: %s\nSize: %s\nPath: %s\nLast Modified: %s",
+                                file.getName(), Formatter.formatShortFileSize(getContext(),
+                                        file.length()), file.getAbsolutePath(), formattedDate));
+
+
+                        details.setPadding(70, 10, 10, 10);
+                        detailDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //optionDialog.cancel();
+                                optionDialogCard.closeOptionsMenu();
+                            }
+                        });
+
+                        AlertDialog alertDialogDetails = detailDialog.create();
+                        alertDialogDetails.show();
+                        break;
+                }
+            }
+        });
+
+
+
+    }
+
+    class CustomAdapterCard extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            return items.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return items[position];
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View myViewCard = getLayoutInflater().inflate(R.layout.option_layout, null);
+            TextView txtOptionsCard = myViewCard.findViewById(R.id.txt_option);
+            ImageView imgOptionsCard = myViewCard.findViewById(R.id.img_option);
+
+            txtOptionsCard.setText(items[position]);
+            if (items[position].equals("Details")) {
+                imgOptionsCard.setImageResource(R.drawable.baseline_info_outline_24);
+            } else if (items[position].equals("Rename")) {
+                imgOptionsCard.setImageResource(R.drawable.baseline_drive_file_rename_outline_24);
+            } else if (items[position].equals("Delete")) {
+                imgOptionsCard.setImageResource(R.drawable.baseline_delete_forever_24);
+            }
+
+            return myViewCard;
+        }
     }
 
 }
