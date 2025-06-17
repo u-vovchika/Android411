@@ -25,9 +25,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.filemanagerprojectaplication.FileAdapter;
 import com.example.filemanagerprojectaplication.FileOpener;
@@ -87,7 +89,12 @@ public class InternalFragment extends Fragment implements OnFileSelectedListener
                         .READ_EXTERNAL_STORAGE}, 100);
             }
             if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission
-                    .READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    .WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission
+                        .WRITE_EXTERNAL_STORAGE}, 100);
+            }
+            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission
+                    .WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 displayFiles();
             }
         }
@@ -168,7 +175,7 @@ public class InternalFragment extends Fragment implements OnFileSelectedListener
     }
 
     @Override
-    public void onFileLongClicked(File file) {
+    public void onFileLongClicked(File file, int position) {
         final Dialog optionDialog = new Dialog(getContext());
         optionDialog.setContentView(R.layout.option_dialog);
         optionDialog.setTitle("Select Options.");
@@ -203,7 +210,6 @@ public class InternalFragment extends Fragment implements OnFileSelectedListener
                                 file.getName(), Formatter.formatShortFileSize(getContext(),
                                         file.length()), file.getAbsolutePath(), formattedDate));
 
-
                         details.setPadding(70, 10, 10, 10);
                         detailDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -212,13 +218,76 @@ public class InternalFragment extends Fragment implements OnFileSelectedListener
                                 optionDialog.closeOptionsMenu();
                             }
                         });
-
                         AlertDialog alertDialogDetails = detailDialog.create();
                         alertDialogDetails.show();
                         break;
+
+                    case "Rename":
+                        AlertDialog.Builder renameDialog = new AlertDialog.Builder(getContext());
+                        renameDialog.setTitle("Rename file:");
+                        final EditText name = new EditText(getContext());
+                        renameDialog.setView(name);
+                        renameDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String newName = name.getEditableText().toString();
+                                File current = new File(file.getAbsolutePath());
+                                File destination;
+                                if (!file.isDirectory()) {
+                                    String extension = file.getAbsolutePath().substring(file.getAbsolutePath().lastIndexOf("."));
+                                    destination = new File(file.getAbsolutePath().replace(file.getName(), newName) + extension);
+                                } else {
+                                    destination = new File(file.getAbsolutePath().replace(file.getName(), newName));
+                                }
+                                if (current.renameTo(destination)) {
+                                    fileList.set(position, destination);
+                                    fileAdapter.notifyItemChanged(position);
+                                    Toast.makeText(getContext(), "Renamed!", Toast.LENGTH_SHORT).show();
+                                    displayFiles();
+                                } else {
+                                    Toast.makeText(getContext(), "Couldn't Rename!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                        renameDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                optionDialog.cancel();
+                            }
+                        });
+                        AlertDialog alertDialogRename = renameDialog.create();
+                        alertDialogRename.show();
+                        break;
+
+                    case "Delete" :
+                        AlertDialog.Builder deleteDialog = new AlertDialog.Builder(getContext());
+                        deleteDialog.setTitle("Delete " + file.getName() + "?");
+
+                        deleteDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                file.delete();
+                                displayFiles();
+//                                fileList.remove(position);
+//                                fileList.clear();
+//                                fileList.addAll(findFiles(storage));
+//                                fileAdapter.notifyDataSetChanged();
+                                Toast.makeText(getContext(), "Delete file: " + file.getName(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        deleteDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                optionDialog.cancel();
+                            }
+                        });
+                        AlertDialog  alertDialogDelete = deleteDialog.create();
+                        alertDialogDelete.show();
+                        break;
+
+
+
                 }
-
-
             }
         });
 
